@@ -12,7 +12,7 @@ T01 소개의 내용을 그대로 이어 붙였습니다. `t08/T01_original.html
 
 서버는 COSE 공개키를 base64url로 저장합니다. 기기 개인키는 WebAuthn 응답에 포함되지 않습니다. 공개키로 로그인 서명을 검증합니다. 아래 실제 저장값은 **로컬 시험용 공개키**이며 사용자 기기의 키라고 주장하지 않습니다.
 
-`pQECAyYgASFYIMJfp-6YWJwhkyuRgqU0aIXQKPCaPNnOsJXm7aBKJSASIlggb-Uv5r2lmMiHHVFHhbPSR9qzxwScJseyHz6oSl1KgTU`
+`pQECAyYgASFYIBd-HMkCH-YH-9afohKUAf6_WlP1yVuHaj_Opq0mKzrSIlgg6LtvgoOkCW9TncwyuULjP5jfx2fIZ5eVb3y9jRXULNk`
 
 등록 요청의 `clientDataJSON`·`attestationObject`와 로그인 요청의 `authenticatorData`·`signature`를 `t08/service-results.json`에 보관했습니다. 개인키·쿠키·세션 원문은 보관하지 않았습니다. 실제 기기 기록은 **이번 창의 확인 기록 내려받기**로 따로 남깁니다. 패스키 저장 위치는 등록할 때 본인이 선택한 값이며 서버 자동 판별값이 아닙니다.
 
@@ -37,7 +37,7 @@ T01 소개의 내용을 그대로 이어 붙였습니다. `t08/T01_original.html
 
 ## ④ 안 열리는 것을 확인한 기록
 
-`node tests/t08.test.mjs`에서 **41/41** 통과했습니다. Node SQLite와 실제 P-256 서명을 쓰는 소프트웨어 인증기 시험입니다. **실제 기기·배포 브라우저의 시험과는 구분합니다.** 상세 요청·응답은 `t08/service-results.json`에 있습니다.
+`node tests/t08.test.mjs`에서 **42/42** 통과했습니다. Node SQLite와 실제 P-256 서명을 쓰는 소프트웨어 인증기 시험입니다. **실제 기기·배포 브라우저의 시험과는 구분합니다.** 상세 요청·응답은 `t08/service-results.json`에 있습니다.
 
 | 확인 | 성공 | 거절 |
 |---|---|---|
@@ -49,12 +49,12 @@ T01 소개의 내용을 그대로 이어 붙였습니다. `t08/T01_original.html
 로그아웃 전 같은 세션 조회는 200, 로그아웃 뒤 **동일한 옛 쿠키 원문** 재사용은 401입니다. 제출 JSON에는 쿠키 값이 없습니다. 다른 Origin의 POST는 403, 틀린 Origin·질문·UV 서명은 401, 만료 질문은 410입니다. 본문에 B의 user_id/owner_id를 넣어도 A 세션으로는 A의 자료만 돌아옵니다. 교차 조회 거절 전후 A와 B의 자료 건수는 각각 3개로 동일합니다.
 
 등록 질문 서로 다른 2개:
-- `LDGVUiOBavnlxkXtCwBVNwyohmMmG4nOjV5N2ozFkXg`
-- `e9L-b_NmrxTJAaCSEFLcHAuJmxjAGMrxd6ojj64bD9w`
+- `qbKwRysQ8Ynrdio5ZtD5JNPBhTAQimcpp79schNHUfE`
+- `B11W0d5CmPFxfw2SmdISXZathcU-B6geAFtbBpE4k3U`
 
 로그인 질문 서로 다른 2개:
-- `62DoEDKquU0ofk0ixgpgG6v2dbDU93HLKWmzi9Txueo`
-- `DkyoKTimm6xltiJZfI2INQJRI8heSwJKMybxvLHGk-g`
+- `9_LNqmU0VRvy1T6D3M0lYYWIsyZDtLuP5bqZK3-HCX8`
+- `VNmpqVUwMlc5gOqI4-8t5bKINDuW437jP26JaQidTZ4`
 
 실제 기기의 패스키 등록 취소, 저장 위치, 독립된 키 두 개의 목록·이름·등록일, 하나 삭제 후 남은 키 로그인, 시크릿 창의 공개 접근은 사용자의 브라우저에서 확인하고 내려받은 JSON을 첨부해야 합니다. 아직 확인하지 않은 항목은 통과로 기록하지 않습니다.
 
@@ -75,3 +75,14 @@ AI 말을 따르지 않은 일: 최종 제출 때 실제 결정으로 확정한�
 - 자동 검사는 실제 기기 호환성 검증을 대신하지 않습니다. 실제 브라우저 근거를 추가한 뒤 제출해야 합니다.
 
 T01 원본 파일 SHA-256: `20f8a532794e3584d82b504af2fc2082c6c7b485c812364862a72edb4fcaf689`
+
+
+## 브라우저 확인 도구 추가
+
+`제출용 접근 차단 확인 도구`에서 실제 배포 API로 상대 계정 조회와 본문 소유자 위조를 검사할 수 있습니다. 다른 계정 로그인 검사는 서버가 발급한 상대 계정용 질문에 현재 계정의 실제 패스키로 서명합니다. 브라우저의 allowCredentials 목록을 바꾸더라도 서버는 질문에 연결된 계정의 키만 받아들입니다. 삭제한 키 검사도 같은 방식으로 기기에 남은 삭제 키의 실제 서명을 전송합니다. 서버가 키를 삭제했다는 이유만으로 기기에 남은 키가 지워지는 것은 아닙니다.
+
+사용한 로그인 질문 검사에는 성공한 요청 본문을 그대로 재전송합니다. 이를 위해 성공한 로그인 뒤 flow 쿠키는 발급 때 정한 최대 5분까지만 유지합니다. 질문 행은 첫 검증 때 이미 소비되므로 동일 쿠키가 남아 있어도 두 번째 검증은 409입니다. 쿠키 원문은 JavaScript나 내려받기 기록에 공개하지 않습니다.
+
+변조 서명 검사는 새로운 로그인 질문에 기기로 서명한 다음 서명의 첫 글자를 바꾸어 전송하고 401 거절을 확인합니다. 검사를 취소한 경우 통과로 기록하지 않습니다. 각 확인 결과는 해당 브라우저 창의 JSON에 포함됩니다.
+
+로그아웃 응답의 `sessionReplay`는 **서버 내부에서 동일한 HttpOnly 쿠키로 실제 private API 처리 함수를 로그아웃 전·후 호출한 결과**입니다. 전·후 200→401을 보관하되, 브라우저에서 추가 HTTP 요청을 보낸 결과와 구분합니다. 응답에 쿠키 원문은 넣지 않습니다. 로컬 자동 시험에서도 같은 옛 쿠키를 다시 사용하는 독립 요청이 401임을 확인합니다.

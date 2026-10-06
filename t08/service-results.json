@@ -1,7 +1,7 @@
 {
   "task": "T08",
   "scope": "로컬 SQLite + 실제 WebAuthn 암호 검증. 소프트웨어 인증기 fixture이며 실제 기기·배포 브라우저 검증이 아님.",
-  "at": "2026-10-06T00:16:43.323Z",
+  "at": "2026-10-06T00:41:09.068Z",
   "checks": [
     {
       "name": "익명 비공개 API 401",
@@ -120,6 +120,10 @@
       "passed": true
     },
     {
+      "name": "로그아웃의 동일 쿠키 내부 API 증거 200→401",
+      "passed": true
+    },
+    {
       "name": "로그아웃한 세션 원문 재사용 401",
       "passed": true
     },
@@ -191,15 +195,15 @@
       },
       "status": 200,
       "response": {
-        "flowId": "7f7b690b-8a01-4422-901f-1bf624878bfe",
+        "flowId": "a17647d2-3d30-4b17-a63b-cb2201d6c8ff",
         "options": {
-          "challenge": "LDGVUiOBavnlxkXtCwBVNwyohmMmG4nOjV5N2ozFkXg",
+          "challenge": "qbKwRysQ8Ynrdio5ZtD5JNPBhTAQimcpp79schNHUfE",
           "rp": {
             "name": "나만의 소개 메모",
             "id": "aleph-passkey-intro.rlatmdgus4141.chatgpt.site"
           },
           "user": {
-            "id": "ZWQzZGY1ZGUtYjM3My00MDg1LTg1NzEtYjJmZDc1ZjU5MDYy",
+            "id": "NDAwZjk0YmMtNDhmYS00OTkwLWEyYzYtNGQ5Y2RkMmVjODA2",
             "name": "cancel-demo",
             "displayName": ""
           },
@@ -241,15 +245,15 @@
       },
       "status": 200,
       "response": {
-        "flowId": "ac5a1fe1-7c93-4df4-a984-270579f1d63e",
+        "flowId": "f580cb58-aa7f-4f52-a464-d41d95676729",
         "options": {
-          "challenge": "e9L-b_NmrxTJAaCSEFLcHAuJmxjAGMrxd6ojj64bD9w",
+          "challenge": "B11W0d5CmPFxfw2SmdISXZathcU-B6geAFtbBpE4k3U",
           "rp": {
             "name": "나만의 소개 메모",
             "id": "aleph-passkey-intro.rlatmdgus4141.chatgpt.site"
           },
           "user": {
-            "id": "MWJjNmQ2M2MtZmI3OC00MTU4LWEyNjYtYzliODE5NGViYjZm",
+            "id": "MTk3YzgzODItY2ZiZC00YjVlLWE5MDktYWQxYjI5OTlkOTAw",
             "name": "cancel-demo",
             "displayName": ""
           },
@@ -285,7 +289,7 @@
       "method": "POST",
       "request": {
         "action": "cancel",
-        "flowId": "ac5a1fe1-7c93-4df4-a984-270579f1d63e"
+        "flowId": "f580cb58-aa7f-4f52-a464-d41d95676729"
       },
       "status": 200,
       "response": {
@@ -306,15 +310,15 @@
       },
       "status": 200,
       "response": {
-        "flowId": "30594a1f-c77e-44b8-899b-eed89f8fa7cb",
+        "flowId": "9f447dba-bd2e-4a84-b7f2-f31e81b37cee",
         "options": {
-          "challenge": "NRrJFfaIw0bSaXTLs2ogD7COqBflIEqFc9COSBXkbeE",
+          "challenge": "zLQvFsXNT47v9n_YwGsrwOH8Dry5mkMnlxUBFz697fQ",
           "rp": {
             "name": "나만의 소개 메모",
             "id": "aleph-passkey-intro.rlatmdgus4141.chatgpt.site"
           },
           "user": {
-            "id": "ZjQzM2U4YzUtNjg3Zi00NTA2LWI4NzktODIwZGEzZTgwNjM3",
+            "id": "OTUzYjRmYWUtMjEyOC00ZTEwLTk3ZTUtYjY0NGI2OWJlNTk0",
             "name": "test-alpha",
             "displayName": ""
           },
@@ -350,16 +354,16 @@
       "method": "POST",
       "request": {
         "action": "register-verify",
-        "flowId": "30594a1f-c77e-44b8-899b-eed89f8fa7cb",
+        "flowId": "9f447dba-bd2e-4a84-b7f2-f31e81b37cee",
         "response": {
-          "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
-          "rawId": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+          "id": "R9zjhLqzgf968riJ5LxEWbVckreNE0TIqeD7FmTrs40",
+          "rawId": "R9zjhLqzgf968riJ5LxEWbVckreNE0TIqeD7FmTrs40",
           "type": "public-key",
           "authenticatorAttachment": "platform",
           "clientExtensionResults": {},
           "response": {
-            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uY3JlYXRlIiwiY2hhbGxlbmdlIjoiTlJySkZmYUl3MGJTYVhUTHMyb2dEN0NPcUJmbElFcUZjOUNPU0JYa2JlRSIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
-            "attestationObject": "o2NmbXRkbm9uZWdhdHRTdG10oGhhdXRoRGF0YViklO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NFFAAAAAAAAAAAAAAAAAAAAAAAAAAAAIACrJt_BFF67ZcTkheL65kGzbwQMFFm4iz1VMih9lUWDpQECAyYgASFYIMJfp-6YWJwhkyuRgqU0aIXQKPCaPNnOsJXm7aBKJSASIlggb-Uv5r2lmMiHHVFHhbPSR9qzxwScJseyHz6oSl1KgTU",
+            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uY3JlYXRlIiwiY2hhbGxlbmdlIjoiekxRdkZzWE5UNDd2OW5fWXdHc3J3T0g4RHJ5NW1rTW5seFVCRno2OTdmUSIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
+            "attestationObject": "o2NmbXRkbm9uZWdhdHRTdG10oGhhdXRoRGF0YViklO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NFFAAAAAAAAAAAAAAAAAAAAAAAAAAAAIEfc44S6s4H_evK4ieS8RFm1XJK3jRNEyKng-xZk67ONpQECAyYgASFYIBd-HMkCH-YH-9afohKUAf6_WlP1yVuHaj_Opq0mKzrSIlgg6LtvgoOkCW9TncwyuULjP5jfx2fIZ5eVb3y9jRXULNk",
             "transports": [
               "internal"
             ]
@@ -371,11 +375,11 @@
         "verified": true,
         "accountCreated": true,
         "credential": {
-          "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+          "id": "R9zjhLqzgf968riJ5LxEWbVckreNE0TIqeD7FmTrs40",
           "name": "시험 A-노트북",
           "storage": "기타·확인 중",
-          "public_key": "pQECAyYgASFYIMJfp-6YWJwhkyuRgqU0aIXQKPCaPNnOsJXm7aBKJSASIlggb-Uv5r2lmMiHHVFHhbPSR9qzxwScJseyHz6oSl1KgTU",
-          "created_at": "2026-10-06T00:16:43.336Z"
+          "public_key": "pQECAyYgASFYIBd-HMkCH-YH-9afohKUAf6_WlP1yVuHaj_Opq0mKzrSIlgg6LtvgoOkCW9TncwyuULjP5jfx2fIZ5eVb3y9jRXULNk",
+          "created_at": "2026-10-06T00:41:09.085Z"
         },
         "privateKeyReceived": false
       },
@@ -390,21 +394,21 @@
       "response": {
         "authenticated": true,
         "user": {
-          "id": "f433e8c5-687f-4506-b879-820da3e80637",
+          "id": "953b4fae-2128-4e10-97e5-b644b69be594",
           "username": "test-alpha"
         },
         "passkeys": [
           {
-            "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+            "id": "R9zjhLqzgf968riJ5LxEWbVckreNE0TIqeD7FmTrs40",
             "name": "시험 A-노트북",
             "storage": "기타·확인 중",
             "device_type": "singleDevice",
             "backed_up": 0,
-            "created_at": "2026-10-06T00:16:43.336Z",
-            "public_key": "pQECAyYgASFYIMJfp-6YWJwhkyuRgqU0aIXQKPCaPNnOsJXm7aBKJSASIlggb-Uv5r2lmMiHHVFHhbPSR9qzxwScJseyHz6oSl1KgTU"
+            "created_at": "2026-10-06T00:41:09.085Z",
+            "public_key": "pQECAyYgASFYIBd-HMkCH-YH-9afohKUAf6_WlP1yVuHaj_Opq0mKzrSIlgg6LtvgoOkCW9TncwyuULjP5jfx2fIZ5eVb3y9jRXULNk"
           }
         ],
-        "sessionExpires": "2026-10-06T12:16:43.337Z"
+        "sessionExpires": "2026-10-06T12:41:09.085Z"
       },
       "cookie": "[값 생략]",
       "setCookie": "[값 생략]"
@@ -416,20 +420,20 @@
       "status": 200,
       "response": {
         "synthetic": true,
-        "owner": "f433e8c5-687f-4506-b879-820da3e80637",
+        "owner": "953b4fae-2128-4e10-97e5-b644b69be594",
         "items": [
           {
-            "id": "165fc222-be23-45f2-b3be-955ceaa24ab8",
+            "id": "4a57d382-6f8e-4c66-a050-a1fb51c5945e",
             "title": "개인 회고",
             "body": "가상 회고 test-alpha: 근거를 먼저 확인하고 결론을 적는다."
           },
           {
-            "id": "71056c0e-40c6-4a63-89e8-986e9b1f8fe9",
+            "id": "6d49baba-026f-453b-9617-ccb8be1444d9",
             "title": "지원 준비 목록",
             "body": "가상 조직 A·B의 공개 채용 정보를 비교한다."
           },
           {
-            "id": "d6c6200d-0b25-4307-9ae4-095551c70dba",
+            "id": "aa607e83-aa71-4acf-b2b0-51f582c75028",
             "title": "프로젝트 메모",
             "body": "가상 프로젝트 test-alpha: 장비 점검 절차를 정리한다."
           }
@@ -449,15 +453,15 @@
       },
       "status": 200,
       "response": {
-        "flowId": "33c2312c-1c63-43f6-8a87-9ed7c8c18579",
+        "flowId": "24cce2ad-e79f-4fe5-8a27-cee9a9e592e5",
         "options": {
-          "challenge": "TNC_f69P64naNeOgaKkH49SoPaMVyysF74E5bvY_zCo",
+          "challenge": "UrISGB2a-VnOb6CnQ9DC0FyBQ9tQJBRaOiU-CWdfGV4",
           "rp": {
             "name": "나만의 소개 메모",
             "id": "aleph-passkey-intro.rlatmdgus4141.chatgpt.site"
           },
           "user": {
-            "id": "ZjQzM2U4YzUtNjg3Zi00NTA2LWI4NzktODIwZGEzZTgwNjM3",
+            "id": "OTUzYjRmYWUtMjEyOC00ZTEwLTk3ZTUtYjY0NGI2OWJlNTk0",
             "name": "test-alpha",
             "displayName": ""
           },
@@ -475,7 +479,7 @@
           "attestation": "none",
           "excludeCredentials": [
             {
-              "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+              "id": "R9zjhLqzgf968riJ5LxEWbVckreNE0TIqeD7FmTrs40",
               "transports": [
                 "internal"
               ],
@@ -501,16 +505,16 @@
       "method": "POST",
       "request": {
         "action": "register-verify",
-        "flowId": "33c2312c-1c63-43f6-8a87-9ed7c8c18579",
+        "flowId": "24cce2ad-e79f-4fe5-8a27-cee9a9e592e5",
         "response": {
-          "id": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM",
-          "rawId": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM",
+          "id": "nWQvDD9JHzsYxX1JMidxquOJp758f71_9LiW2Wj1Xfc",
+          "rawId": "nWQvDD9JHzsYxX1JMidxquOJp758f71_9LiW2Wj1Xfc",
           "type": "public-key",
           "authenticatorAttachment": "platform",
           "clientExtensionResults": {},
           "response": {
-            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uY3JlYXRlIiwiY2hhbGxlbmdlIjoiVE5DX2Y2OVA2NG5hTmVPZ2FLa0g0OVNvUGFNVnl5c0Y3NEU1YnZZX3pDbyIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
-            "attestationObject": "o2NmbXRkbm9uZWdhdHRTdG10oGhhdXRoRGF0YViklO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NFFAAAAAAAAAAAAAAAAAAAAAAAAAAAAIIU4HCQFcNlcLy8pu_hEEGYjwBL6axJFYQBEKv0hjvAjpQECAyYgASFYIPundlhZ_YFMxvOtVcjGg5LiMiw33jTfBhWscFvh_2d_IlggWFxu2wLpI2M1a2for1TGtQnJ7S6CvyBfgvDXTs2TeT4",
+            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uY3JlYXRlIiwiY2hhbGxlbmdlIjoiVXJJU0dCMmEtVm5PYjZDblE5REMwRnlCUTl0UUpCUmFPaVUtQ1dkZkdWNCIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
+            "attestationObject": "o2NmbXRkbm9uZWdhdHRTdG10oGhhdXRoRGF0YViklO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NFFAAAAAAAAAAAAAAAAAAAAAAAAAAAAIJ1kLww_SR87GMV9STIncarjiae-fH-9f_S4ltlo9V33pQECAyYgASFYIA-QaCm7yU0qP0pfn_zNCzLMW08Aw05uCQMdjBv_dnBAIlggNiJ9XBObCuWQILt8QHsb_lBorBMzhT1PZGV1Pc8GgR0",
             "transports": [
               "internal"
             ]
@@ -522,11 +526,11 @@
         "verified": true,
         "accountCreated": false,
         "credential": {
-          "id": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM",
+          "id": "nWQvDD9JHzsYxX1JMidxquOJp758f71_9LiW2Wj1Xfc",
           "name": "시험 A-보조 키",
           "storage": "기타·확인 중",
-          "public_key": "pQECAyYgASFYIPundlhZ_YFMxvOtVcjGg5LiMiw33jTfBhWscFvh_2d_IlggWFxu2wLpI2M1a2for1TGtQnJ7S6CvyBfgvDXTs2TeT4",
-          "created_at": "2026-10-06T00:16:43.342Z"
+          "public_key": "pQECAyYgASFYIA-QaCm7yU0qP0pfn_zNCzLMW08Aw05uCQMdjBv_dnBAIlggNiJ9XBObCuWQILt8QHsb_lBorBMzhT1PZGV1Pc8GgR0",
+          "created_at": "2026-10-06T00:41:09.088Z"
         },
         "privateKeyReceived": false
       },
@@ -541,30 +545,30 @@
       "response": {
         "authenticated": true,
         "user": {
-          "id": "f433e8c5-687f-4506-b879-820da3e80637",
+          "id": "953b4fae-2128-4e10-97e5-b644b69be594",
           "username": "test-alpha"
         },
         "passkeys": [
           {
-            "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+            "id": "R9zjhLqzgf968riJ5LxEWbVckreNE0TIqeD7FmTrs40",
             "name": "시험 A-노트북",
             "storage": "기타·확인 중",
             "device_type": "singleDevice",
             "backed_up": 0,
-            "created_at": "2026-10-06T00:16:43.336Z",
-            "public_key": "pQECAyYgASFYIMJfp-6YWJwhkyuRgqU0aIXQKPCaPNnOsJXm7aBKJSASIlggb-Uv5r2lmMiHHVFHhbPSR9qzxwScJseyHz6oSl1KgTU"
+            "created_at": "2026-10-06T00:41:09.085Z",
+            "public_key": "pQECAyYgASFYIBd-HMkCH-YH-9afohKUAf6_WlP1yVuHaj_Opq0mKzrSIlgg6LtvgoOkCW9TncwyuULjP5jfx2fIZ5eVb3y9jRXULNk"
           },
           {
-            "id": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM",
+            "id": "nWQvDD9JHzsYxX1JMidxquOJp758f71_9LiW2Wj1Xfc",
             "name": "시험 A-보조 키",
             "storage": "기타·확인 중",
             "device_type": "singleDevice",
             "backed_up": 0,
-            "created_at": "2026-10-06T00:16:43.342Z",
-            "public_key": "pQECAyYgASFYIPundlhZ_YFMxvOtVcjGg5LiMiw33jTfBhWscFvh_2d_IlggWFxu2wLpI2M1a2for1TGtQnJ7S6CvyBfgvDXTs2TeT4"
+            "created_at": "2026-10-06T00:41:09.088Z",
+            "public_key": "pQECAyYgASFYIA-QaCm7yU0qP0pfn_zNCzLMW08Aw05uCQMdjBv_dnBAIlggNiJ9XBObCuWQILt8QHsb_lBorBMzhT1PZGV1Pc8GgR0"
           }
         ],
-        "sessionExpires": "2026-10-06T12:16:43.337Z"
+        "sessionExpires": "2026-10-06T12:41:09.085Z"
       },
       "cookie": "[값 생략]",
       "setCookie": "[값 생략]"
@@ -580,15 +584,15 @@
       },
       "status": 200,
       "response": {
-        "flowId": "f05d4b80-2e9e-42b6-9119-7967656fe127",
+        "flowId": "02097ad5-d21a-464b-9ab4-589a67f56d75",
         "options": {
-          "challenge": "5P9DuTsgenIaTw5dx322y9hwqs03_dnUA6hZE2696Kg",
+          "challenge": "eUt8ZBc73pW45aYNlakXyYjAzD_SGqwWxKJFi_-LKpk",
           "rp": {
             "name": "나만의 소개 메모",
             "id": "aleph-passkey-intro.rlatmdgus4141.chatgpt.site"
           },
           "user": {
-            "id": "NDk0MzA2ZjgtMDgzYS00OGE0LThjOTItOTM4NDhhZTM2Yzlj",
+            "id": "ZDE1ODE0MjctNzQ2Mi00MzU5LTljMzUtNGVlYjU0Y2YxYjM4",
             "name": "test-beta",
             "displayName": ""
           },
@@ -624,16 +628,16 @@
       "method": "POST",
       "request": {
         "action": "register-verify",
-        "flowId": "f05d4b80-2e9e-42b6-9119-7967656fe127",
+        "flowId": "02097ad5-d21a-464b-9ab4-589a67f56d75",
         "response": {
-          "id": "Cv6lChUkZDWytm3Dhw2QB7NqEtXCeYqRdzBQ466IgZE",
-          "rawId": "Cv6lChUkZDWytm3Dhw2QB7NqEtXCeYqRdzBQ466IgZE",
+          "id": "r9kMzEo6MJkTamQCRxeaXsQ4UYTgUXx2dJQsYda6ex4",
+          "rawId": "r9kMzEo6MJkTamQCRxeaXsQ4UYTgUXx2dJQsYda6ex4",
           "type": "public-key",
           "authenticatorAttachment": "platform",
           "clientExtensionResults": {},
           "response": {
-            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uY3JlYXRlIiwiY2hhbGxlbmdlIjoiNVA5RHVUc2dlbklhVHc1ZHgzMjJ5OWh3cXMwM19kblVBNmhaRTI2OTZLZyIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
-            "attestationObject": "o2NmbXRkbm9uZWdhdHRTdG10oGhhdXRoRGF0YViklO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NFFAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAr-pQoVJGQ1srZtw4cNkAezahLVwnmKkXcwUOOuiIGRpQECAyYgASFYIM9NL2-SlL7JPm4smLKHr6ycpGwsSwfJZSxpE8XocIv7IlggEwRt_NGXCsLFMau3aRZua8QFORm-5CpuOwuFKSnd7co",
+            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uY3JlYXRlIiwiY2hhbGxlbmdlIjoiZVV0OFpCYzczcFc0NWFZTmxha1h5WWpBekRfU0dxd1d4S0pGaV8tTEtwayIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
+            "attestationObject": "o2NmbXRkbm9uZWdhdHRTdG10oGhhdXRoRGF0YViklO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NFFAAAAAAAAAAAAAAAAAAAAAAAAAAAAIK_ZDMxKOjCZE2pkAkcXml7EOFGE4FF8dnSULGHWunsepQECAyYgASFYIM8-dG5Wi1zJ4baPh71jLsS-AxA87J4Z_M9ud7ZVuRNAIlggAWM13JchNlspD5nl6AzgxEoZKZn8iKwi6FDs9MoUEn8",
             "transports": [
               "internal"
             ]
@@ -645,11 +649,11 @@
         "verified": true,
         "accountCreated": true,
         "credential": {
-          "id": "Cv6lChUkZDWytm3Dhw2QB7NqEtXCeYqRdzBQ466IgZE",
+          "id": "r9kMzEo6MJkTamQCRxeaXsQ4UYTgUXx2dJQsYda6ex4",
           "name": "시험 B-키",
           "storage": "기타·확인 중",
-          "public_key": "pQECAyYgASFYIM9NL2-SlL7JPm4smLKHr6ycpGwsSwfJZSxpE8XocIv7IlggEwRt_NGXCsLFMau3aRZua8QFORm-5CpuOwuFKSnd7co",
-          "created_at": "2026-10-06T00:16:43.344Z"
+          "public_key": "pQECAyYgASFYIM8-dG5Wi1zJ4baPh71jLsS-AxA87J4Z_M9ud7ZVuRNAIlggAWM13JchNlspD5nl6AzgxEoZKZn8iKwi6FDs9MoUEn8",
+          "created_at": "2026-10-06T00:41:09.090Z"
         },
         "privateKeyReceived": false
       },
@@ -664,27 +668,27 @@
       "response": {
         "authenticated": true,
         "user": {
-          "id": "494306f8-083a-48a4-8c92-93848ae36c9c",
+          "id": "d1581427-7462-4359-9c35-4eeb54cf1b38",
           "username": "test-beta"
         },
         "passkeys": [
           {
-            "id": "Cv6lChUkZDWytm3Dhw2QB7NqEtXCeYqRdzBQ466IgZE",
+            "id": "r9kMzEo6MJkTamQCRxeaXsQ4UYTgUXx2dJQsYda6ex4",
             "name": "시험 B-키",
             "storage": "기타·확인 중",
             "device_type": "singleDevice",
             "backed_up": 0,
-            "created_at": "2026-10-06T00:16:43.344Z",
-            "public_key": "pQECAyYgASFYIM9NL2-SlL7JPm4smLKHr6ycpGwsSwfJZSxpE8XocIv7IlggEwRt_NGXCsLFMau3aRZua8QFORm-5CpuOwuFKSnd7co"
+            "created_at": "2026-10-06T00:41:09.090Z",
+            "public_key": "pQECAyYgASFYIM8-dG5Wi1zJ4baPh71jLsS-AxA87J4Z_M9ud7ZVuRNAIlggAWM13JchNlspD5nl6AzgxEoZKZn8iKwi6FDs9MoUEn8"
           }
         ],
-        "sessionExpires": "2026-10-06T12:16:43.344Z"
+        "sessionExpires": "2026-10-06T12:41:09.090Z"
       },
       "cookie": "[값 생략]",
       "setCookie": "[값 생략]"
     },
     {
-      "path": "/api/private?user_id=494306f8-083a-48a4-8c92-93848ae36c9c",
+      "path": "/api/private?user_id=d1581427-7462-4359-9c35-4eeb54cf1b38",
       "method": "GET",
       "request": null,
       "status": 403,
@@ -695,7 +699,7 @@
       "setCookie": "[값 생략]"
     },
     {
-      "path": "/api/private?user_id=f433e8c5-687f-4506-b879-820da3e80637",
+      "path": "/api/private?user_id=953b4fae-2128-4e10-97e5-b644b69be594",
       "method": "GET",
       "request": null,
       "status": 403,
@@ -709,26 +713,26 @@
       "path": "/api/private",
       "method": "POST",
       "request": {
-        "user_id": "494306f8-083a-48a4-8c92-93848ae36c9c",
-        "owner_id": "494306f8-083a-48a4-8c92-93848ae36c9c"
+        "user_id": "d1581427-7462-4359-9c35-4eeb54cf1b38",
+        "owner_id": "d1581427-7462-4359-9c35-4eeb54cf1b38"
       },
       "status": 200,
       "response": {
         "synthetic": true,
-        "owner": "f433e8c5-687f-4506-b879-820da3e80637",
+        "owner": "953b4fae-2128-4e10-97e5-b644b69be594",
         "items": [
           {
-            "id": "165fc222-be23-45f2-b3be-955ceaa24ab8",
+            "id": "4a57d382-6f8e-4c66-a050-a1fb51c5945e",
             "title": "개인 회고",
             "body": "가상 회고 test-alpha: 근거를 먼저 확인하고 결론을 적는다."
           },
           {
-            "id": "71056c0e-40c6-4a63-89e8-986e9b1f8fe9",
+            "id": "6d49baba-026f-453b-9617-ccb8be1444d9",
             "title": "지원 준비 목록",
             "body": "가상 조직 A·B의 공개 채용 정보를 비교한다."
           },
           {
-            "id": "d6c6200d-0b25-4307-9ae4-095551c70dba",
+            "id": "aa607e83-aa71-4acf-b2b0-51f582c75028",
             "title": "프로젝트 메모",
             "body": "가상 프로젝트 test-alpha: 장비 점검 절차를 정리한다."
           }
@@ -742,7 +746,7 @@
       "method": "POST",
       "request": {
         "action": "delete-passkey",
-        "id": "Cv6lChUkZDWytm3Dhw2QB7NqEtXCeYqRdzBQ466IgZE"
+        "id": "r9kMzEo6MJkTamQCRxeaXsQ4UYTgUXx2dJQsYda6ex4"
       },
       "status": 403,
       "response": {
@@ -760,20 +764,20 @@
       },
       "status": 200,
       "response": {
-        "flowId": "adf19c3b-630d-4d9f-a796-49c718f06914",
+        "flowId": "31e31ebf-0147-46e1-969f-4fb31f0cc802",
         "options": {
           "rpId": "aleph-passkey-intro.rlatmdgus4141.chatgpt.site",
-          "challenge": "62DoEDKquU0ofk0ixgpgG6v2dbDU93HLKWmzi9Txueo",
+          "challenge": "9_LNqmU0VRvy1T6D3M0lYYWIsyZDtLuP5bqZK3-HCX8",
           "allowCredentials": [
             {
-              "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+              "id": "R9zjhLqzgf968riJ5LxEWbVckreNE0TIqeD7FmTrs40",
               "transports": [
                 "internal"
               ],
               "type": "public-key"
             },
             {
-              "id": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM",
+              "id": "nWQvDD9JHzsYxX1JMidxquOJp758f71_9LiW2Wj1Xfc",
               "transports": [
                 "internal"
               ],
@@ -792,18 +796,18 @@
       "method": "POST",
       "request": {
         "action": "login-verify",
-        "flowId": "adf19c3b-630d-4d9f-a796-49c718f06914",
+        "flowId": "31e31ebf-0147-46e1-969f-4fb31f0cc802",
         "response": {
-          "id": "Cv6lChUkZDWytm3Dhw2QB7NqEtXCeYqRdzBQ466IgZE",
-          "rawId": "Cv6lChUkZDWytm3Dhw2QB7NqEtXCeYqRdzBQ466IgZE",
+          "id": "r9kMzEo6MJkTamQCRxeaXsQ4UYTgUXx2dJQsYda6ex4",
+          "rawId": "r9kMzEo6MJkTamQCRxeaXsQ4UYTgUXx2dJQsYda6ex4",
           "type": "public-key",
           "authenticatorAttachment": "platform",
           "clientExtensionResults": {},
           "response": {
-            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiNjJEb0VES3F1VTBvZmswaXhncGdHNnYyZGJEVTkzSExLV216aTlUeHVlbyIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
+            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiOV9MTnFtVTBWUnZ5MVQ2RDNNMGxZWVdJc3laRHRMdVA1YnFaSzMtSENYOCIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
             "authenticatorData": "lO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NEFAAAAAQ",
-            "signature": "MEUCIE5_dPETQ_nICCC13JdyODw2FX2zBhtTT5TMVxO3zwD-AiEA4wrIFRf3iu_VGQ3itFQCSyX7yj6ugTdYCCi9LVQGJTo",
-            "userHandle": "NDk0MzA2ZjgtMDgzYS00OGE0LThjOTItOTM4NDhhZTM2Yzlj"
+            "signature": "MEUCIQDWJpSFhbXXWjS0CMbKVlRCRFr8c2E29IVHWFS3BiCRIAIgMs2IZTnYzCDgvrADvJp_oEXVEu6b2Yz5xM_OmYdxKsA",
+            "userHandle": "ZDE1ODE0MjctNzQ2Mi00MzU5LTljMzUtNGVlYjU0Y2YxYjM4"
           }
         }
       },
@@ -823,20 +827,20 @@
       },
       "status": 200,
       "response": {
-        "flowId": "18a4dbed-f060-43b9-819a-e837689684ee",
+        "flowId": "6fe63782-1ec7-4bf4-88f4-8bd229bf6cce",
         "options": {
           "rpId": "aleph-passkey-intro.rlatmdgus4141.chatgpt.site",
-          "challenge": "DkyoKTimm6xltiJZfI2INQJRI8heSwJKMybxvLHGk-g",
+          "challenge": "VNmpqVUwMlc5gOqI4-8t5bKINDuW437jP26JaQidTZ4",
           "allowCredentials": [
             {
-              "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+              "id": "R9zjhLqzgf968riJ5LxEWbVckreNE0TIqeD7FmTrs40",
               "transports": [
                 "internal"
               ],
               "type": "public-key"
             },
             {
-              "id": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM",
+              "id": "nWQvDD9JHzsYxX1JMidxquOJp758f71_9LiW2Wj1Xfc",
               "transports": [
                 "internal"
               ],
@@ -855,18 +859,18 @@
       "method": "POST",
       "request": {
         "action": "login-verify",
-        "flowId": "18a4dbed-f060-43b9-819a-e837689684ee",
+        "flowId": "6fe63782-1ec7-4bf4-88f4-8bd229bf6cce",
         "response": {
-          "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
-          "rawId": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+          "id": "R9zjhLqzgf968riJ5LxEWbVckreNE0TIqeD7FmTrs40",
+          "rawId": "R9zjhLqzgf968riJ5LxEWbVckreNE0TIqeD7FmTrs40",
           "type": "public-key",
           "authenticatorAttachment": "platform",
           "clientExtensionResults": {},
           "response": {
-            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiRGt5b0tUaW1tNnhsdGlKWmZJMklOUUpSSThoZVN3SktNeWJ4dkxIR2stZyIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
+            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiVk5tcHFWVXdNbGM1Z09xSTQtOHQ1YktJTkR1VzQzN2pQMjZKYVFpZFRaNCIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
             "authenticatorData": "lO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NEFAAAAAQ",
-            "signature": "MEYCIQCmV3ENG_OutBgCYHgWARyRYviIE5yJwI9uUWewQYcvmgIhAIFhGsfwFOC2r8KDmJV01JL1wIwmzFstisUyIlxauwAX",
-            "userHandle": "ZjQzM2U4YzUtNjg3Zi00NTA2LWI4NzktODIwZGEzZTgwNjM3"
+            "signature": "MEUCIERxNZCGmpqqT_MAEYwGSIBKZjKRE3-Ix6zg04raeHUkAiEArdO6ZQ95kn5VrXz6KiFEULp2jxRZuRDqC3bn64-YyDc",
+            "userHandle": "OTUzYjRmYWUtMjEyOC00ZTEwLTk3ZTUtYjY0NGI2OWJlNTk0"
           }
         }
       },
@@ -882,108 +886,18 @@
       "method": "POST",
       "request": {
         "action": "login-verify",
-        "flowId": "18a4dbed-f060-43b9-819a-e837689684ee",
+        "flowId": "6fe63782-1ec7-4bf4-88f4-8bd229bf6cce",
         "response": {
-          "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
-          "rawId": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+          "id": "R9zjhLqzgf968riJ5LxEWbVckreNE0TIqeD7FmTrs40",
+          "rawId": "R9zjhLqzgf968riJ5LxEWbVckreNE0TIqeD7FmTrs40",
           "type": "public-key",
           "authenticatorAttachment": "platform",
           "clientExtensionResults": {},
           "response": {
-            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiRGt5b0tUaW1tNnhsdGlKWmZJMklOUUpSSThoZVN3SktNeWJ4dkxIR2stZyIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
+            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiVk5tcHFWVXdNbGM1Z09xSTQtOHQ1YktJTkR1VzQzN2pQMjZKYVFpZFRaNCIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
             "authenticatorData": "lO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NEFAAAAAQ",
-            "signature": "MEYCIQCmV3ENG_OutBgCYHgWARyRYviIE5yJwI9uUWewQYcvmgIhAIFhGsfwFOC2r8KDmJV01JL1wIwmzFstisUyIlxauwAX",
-            "userHandle": "ZjQzM2U4YzUtNjg3Zi00NTA2LWI4NzktODIwZGEzZTgwNjM3"
-          }
-        }
-      },
-      "status": 401,
-      "response": {
-        "error": "등록·로그인 흐름을 다시 시작해 주세요."
-      },
-      "cookie": "[값 생략]",
-      "setCookie": "[값 생략]"
-    },
-    {
-      "path": "/api/passkeys",
-      "method": "POST",
-      "request": {
-        "action": "login-options",
-        "username": "test-alpha"
-      },
-      "status": 200,
-      "response": {
-        "flowId": "2989c3ac-f5de-4308-a9de-50b107c27165",
-        "options": {
-          "rpId": "aleph-passkey-intro.rlatmdgus4141.chatgpt.site",
-          "challenge": "SZU7avR5XWyb9KeMpUgocZbltLub_wO0AVWVOiAX2K4",
-          "allowCredentials": [
-            {
-              "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
-              "transports": [
-                "internal"
-              ],
-              "type": "public-key"
-            },
-            {
-              "id": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM",
-              "transports": [
-                "internal"
-              ],
-              "type": "public-key"
-            }
-          ],
-          "timeout": 60000,
-          "userVerification": "required"
-        }
-      },
-      "cookie": "[값 생략]",
-      "setCookie": "[값 생략]"
-    },
-    {
-      "path": "/api/passkeys",
-      "method": "POST",
-      "request": {
-        "action": "login-verify",
-        "flowId": "2989c3ac-f5de-4308-a9de-50b107c27165",
-        "response": {
-          "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
-          "rawId": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
-          "type": "public-key",
-          "authenticatorAttachment": "platform",
-          "clientExtensionResults": {},
-          "response": {
-            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiU1pVN2F2UjVYV3liOUtlTXBVZ29jWmJsdEx1Yl93TzBBVldWT2lBWDJLNCIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
-            "authenticatorData": "lO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NEFAAAAAg",
-            "signature": "MEUCIF_Gvz-aQGLLxeSHkiQ6jJGORpe4oxH5T9_QX5Wpj1Y-AiEA0my71KGjS4IfKLH4m_4iWsKPH5uPFcCz0P3vHeFGgvY",
-            "userHandle": "ZjQzM2U4YzUtNjg3Zi00NTA2LWI4NzktODIwZGEzZTgwNjM3"
-          }
-        }
-      },
-      "status": 200,
-      "response": {
-        "verified": true
-      },
-      "cookie": "[값 생략]",
-      "setCookie": "[값 생략]"
-    },
-    {
-      "path": "/api/passkeys",
-      "method": "POST",
-      "request": {
-        "action": "login-verify",
-        "flowId": "2989c3ac-f5de-4308-a9de-50b107c27165",
-        "response": {
-          "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
-          "rawId": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
-          "type": "public-key",
-          "authenticatorAttachment": "platform",
-          "clientExtensionResults": {},
-          "response": {
-            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiU1pVN2F2UjVYV3liOUtlTXBVZ29jWmJsdEx1Yl93TzBBVldWT2lBWDJLNCIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
-            "authenticatorData": "lO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NEFAAAAAg",
-            "signature": "MEUCIF_Gvz-aQGLLxeSHkiQ6jJGORpe4oxH5T9_QX5Wpj1Y-AiEA0my71KGjS4IfKLH4m_4iWsKPH5uPFcCz0P3vHeFGgvY",
-            "userHandle": "ZjQzM2U4YzUtNjg3Zi00NTA2LWI4NzktODIwZGEzZTgwNjM3"
+            "signature": "MEUCIERxNZCGmpqqT_MAEYwGSIBKZjKRE3-Ix6zg04raeHUkAiEArdO6ZQ95kn5VrXz6KiFEULp2jxRZuRDqC3bn64-YyDc",
+            "userHandle": "OTUzYjRmYWUtMjEyOC00ZTEwLTk3ZTUtYjY0NGI2OWJlNTk0"
           }
         }
       },
@@ -1003,20 +917,20 @@
       },
       "status": 200,
       "response": {
-        "flowId": "7b6b6218-a2b5-449c-bf72-1e1cc6ad17ba",
+        "flowId": "38200a45-0f15-4a8a-90a6-e6712c6a11ed",
         "options": {
           "rpId": "aleph-passkey-intro.rlatmdgus4141.chatgpt.site",
-          "challenge": "JO-k31W8xzsiar7Wfz_aH_zdnjPBibmUPJ7nU_b-p-8",
+          "challenge": "i9wY6sHHf4No15kQ6toM9qbrEKDayCh_sute-6JSIHU",
           "allowCredentials": [
             {
-              "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+              "id": "R9zjhLqzgf968riJ5LxEWbVckreNE0TIqeD7FmTrs40",
               "transports": [
                 "internal"
               ],
               "type": "public-key"
             },
             {
-              "id": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM",
+              "id": "nWQvDD9JHzsYxX1JMidxquOJp758f71_9LiW2Wj1Xfc",
               "transports": [
                 "internal"
               ],
@@ -1035,18 +949,108 @@
       "method": "POST",
       "request": {
         "action": "login-verify",
-        "flowId": "7b6b6218-a2b5-449c-bf72-1e1cc6ad17ba",
+        "flowId": "38200a45-0f15-4a8a-90a6-e6712c6a11ed",
         "response": {
-          "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
-          "rawId": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+          "id": "R9zjhLqzgf968riJ5LxEWbVckreNE0TIqeD7FmTrs40",
+          "rawId": "R9zjhLqzgf968riJ5LxEWbVckreNE0TIqeD7FmTrs40",
           "type": "public-key",
           "authenticatorAttachment": "platform",
           "clientExtensionResults": {},
           "response": {
-            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiSk8tazMxVzh4enNpYXI3V2Z6X2FIX3pkbmpQQmlibVVQSjduVV9iLXAtOCIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
+            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiaTl3WTZzSEhmNE5vMTVrUTZ0b005cWJyRUtEYXlDaF9zdXRlLTZKU0lIVSIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
+            "authenticatorData": "lO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NEFAAAAAg",
+            "signature": "MEUCIQD0P3AzWOku_kmyzcuECVadVmthDzTCl90iUFKP53fZgwIgR4PMfXiXnmVxwE9elmk8Ihz69S1LabKzgyQbHmKwjDA",
+            "userHandle": "OTUzYjRmYWUtMjEyOC00ZTEwLTk3ZTUtYjY0NGI2OWJlNTk0"
+          }
+        }
+      },
+      "status": 200,
+      "response": {
+        "verified": true
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "login-verify",
+        "flowId": "38200a45-0f15-4a8a-90a6-e6712c6a11ed",
+        "response": {
+          "id": "R9zjhLqzgf968riJ5LxEWbVckreNE0TIqeD7FmTrs40",
+          "rawId": "R9zjhLqzgf968riJ5LxEWbVckreNE0TIqeD7FmTrs40",
+          "type": "public-key",
+          "authenticatorAttachment": "platform",
+          "clientExtensionResults": {},
+          "response": {
+            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiaTl3WTZzSEhmNE5vMTVrUTZ0b005cWJyRUtEYXlDaF9zdXRlLTZKU0lIVSIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
+            "authenticatorData": "lO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NEFAAAAAg",
+            "signature": "MEUCIQD0P3AzWOku_kmyzcuECVadVmthDzTCl90iUFKP53fZgwIgR4PMfXiXnmVxwE9elmk8Ihz69S1LabKzgyQbHmKwjDA",
+            "userHandle": "OTUzYjRmYWUtMjEyOC00ZTEwLTk3ZTUtYjY0NGI2OWJlNTk0"
+          }
+        }
+      },
+      "status": 409,
+      "response": {
+        "error": "이미 사용했거나 취소된 질문입니다. 새로 시작해 주세요."
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "login-options",
+        "username": "test-alpha"
+      },
+      "status": 200,
+      "response": {
+        "flowId": "b7249bb2-4a95-4225-8856-b3538cc5c1d8",
+        "options": {
+          "rpId": "aleph-passkey-intro.rlatmdgus4141.chatgpt.site",
+          "challenge": "DZ-LTPS6xEZyOaO7aNSMJHU8ENlPSQF5JL-w0aSyrkw",
+          "allowCredentials": [
+            {
+              "id": "R9zjhLqzgf968riJ5LxEWbVckreNE0TIqeD7FmTrs40",
+              "transports": [
+                "internal"
+              ],
+              "type": "public-key"
+            },
+            {
+              "id": "nWQvDD9JHzsYxX1JMidxquOJp758f71_9LiW2Wj1Xfc",
+              "transports": [
+                "internal"
+              ],
+              "type": "public-key"
+            }
+          ],
+          "timeout": 60000,
+          "userVerification": "required"
+        }
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "login-verify",
+        "flowId": "b7249bb2-4a95-4225-8856-b3538cc5c1d8",
+        "response": {
+          "id": "R9zjhLqzgf968riJ5LxEWbVckreNE0TIqeD7FmTrs40",
+          "rawId": "R9zjhLqzgf968riJ5LxEWbVckreNE0TIqeD7FmTrs40",
+          "type": "public-key",
+          "authenticatorAttachment": "platform",
+          "clientExtensionResults": {},
+          "response": {
+            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiRFotTFRQUzZ4RVp5T2FPN2FOU01KSFU4RU5sUFNRRjVKTC13MGFTeXJrdyIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
             "authenticatorData": "lO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NEFAAAAAw",
-            "signature": "MEUCIQCOLs-fwQbgozxt2krSLYKEhiz0vreKR4htxpawZly3AwIgShmYj1n8NPBkeJzb6otTOz_XE_XPgA0sSxxcjO31fw0",
-            "userHandle": "ZjQzM2U4YzUtNjg3Zi00NTA2LWI4NzktODIwZGEzZTgwNjM3"
+            "signature": "MEUCICCmmwaFAKUCDKyJHBK3xNQRYpKqGiND7eYV13YwkvxDAiEAyPpQru4KVdhvuN82pqTxrVo-7kgAOWAk6Bki2KP7ct4",
+            "userHandle": "OTUzYjRmYWUtMjEyOC00ZTEwLTk3ZTUtYjY0NGI2OWJlNTk0"
           }
         }
       },
@@ -1066,20 +1070,20 @@
       },
       "status": 200,
       "response": {
-        "flowId": "c6cef611-b610-4525-9675-b898a0c6275b",
+        "flowId": "dcacea0a-3b0e-4414-bc37-360d3e8f482e",
         "options": {
           "rpId": "aleph-passkey-intro.rlatmdgus4141.chatgpt.site",
-          "challenge": "xL7ohCmKdFz3k_nv19CGujlHMsHFs-zeegNs0piTylw",
+          "challenge": "RNxJo3MUmnnjYSkSQfpO8T6fKNjrq96Pp_nyiRBNJZE",
           "allowCredentials": [
             {
-              "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+              "id": "R9zjhLqzgf968riJ5LxEWbVckreNE0TIqeD7FmTrs40",
               "transports": [
                 "internal"
               ],
               "type": "public-key"
             },
             {
-              "id": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM",
+              "id": "nWQvDD9JHzsYxX1JMidxquOJp758f71_9LiW2Wj1Xfc",
               "transports": [
                 "internal"
               ],
@@ -1098,18 +1102,18 @@
       "method": "POST",
       "request": {
         "action": "login-verify",
-        "flowId": "c6cef611-b610-4525-9675-b898a0c6275b",
+        "flowId": "dcacea0a-3b0e-4414-bc37-360d3e8f482e",
         "response": {
-          "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
-          "rawId": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+          "id": "R9zjhLqzgf968riJ5LxEWbVckreNE0TIqeD7FmTrs40",
+          "rawId": "R9zjhLqzgf968riJ5LxEWbVckreNE0TIqeD7FmTrs40",
           "type": "public-key",
           "authenticatorAttachment": "platform",
           "clientExtensionResults": {},
           "response": {
-            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiMDJvSE96S2wwTHRJNlBydFhpYkh6TkpyMTU1S20tNzRhaXVlV0FybThFUSIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
+            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiQlhFYnMtQ0toSkpKQUNEMHBydFFLVmU0TmlUSFQ0Wlp5c2lSalczM25KNCIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
             "authenticatorData": "lO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NEFAAAABA",
-            "signature": "MEQCIAeQ7zTWopsgs7FH2llnfPd1PycbFHUm-e0C36JKzdJTAiBbrPKRkV0kMZkOAbYC0q7jklbmkp_xyhsH1p9nD0zT5g",
-            "userHandle": "ZjQzM2U4YzUtNjg3Zi00NTA2LWI4NzktODIwZGEzZTgwNjM3"
+            "signature": "MEUCIAJ2ZTyjZZxS_rtylC_2BbZFi7yym1yQvoGpSuA7UCm6AiEA0UGQBjfPD6iWXIfDho2TymC9reP-6VTSocOiUqpZG6M",
+            "userHandle": "OTUzYjRmYWUtMjEyOC00ZTEwLTk3ZTUtYjY0NGI2OWJlNTk0"
           }
         }
       },
@@ -1129,20 +1133,20 @@
       },
       "status": 200,
       "response": {
-        "flowId": "cc7efd88-15ce-431c-88eb-8c2b75c4b87e",
+        "flowId": "72ee886a-29e9-4d9b-a012-801d27bf6780",
         "options": {
           "rpId": "aleph-passkey-intro.rlatmdgus4141.chatgpt.site",
-          "challenge": "-KFBNHXjuCsarSZj19lJzzcpGHgNApXXL0nGxCbvnYU",
+          "challenge": "qXHpw29iszb1pZt_PS44AhJOI9grTQ5s-tWuGAmev44",
           "allowCredentials": [
             {
-              "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+              "id": "R9zjhLqzgf968riJ5LxEWbVckreNE0TIqeD7FmTrs40",
               "transports": [
                 "internal"
               ],
               "type": "public-key"
             },
             {
-              "id": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM",
+              "id": "nWQvDD9JHzsYxX1JMidxquOJp758f71_9LiW2Wj1Xfc",
               "transports": [
                 "internal"
               ],
@@ -1161,18 +1165,18 @@
       "method": "POST",
       "request": {
         "action": "login-verify",
-        "flowId": "cc7efd88-15ce-431c-88eb-8c2b75c4b87e",
+        "flowId": "72ee886a-29e9-4d9b-a012-801d27bf6780",
         "response": {
-          "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
-          "rawId": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+          "id": "R9zjhLqzgf968riJ5LxEWbVckreNE0TIqeD7FmTrs40",
+          "rawId": "R9zjhLqzgf968riJ5LxEWbVckreNE0TIqeD7FmTrs40",
           "type": "public-key",
           "authenticatorAttachment": "platform",
           "clientExtensionResults": {},
           "response": {
-            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiLUtGQk5IWGp1Q3NhclNaajE5bEp6emNwR0hnTkFwWFhMMG5HeENidm5ZVSIsIm9yaWdpbiI6Imh0dHBzOi8vZXZpbC5leGFtcGxlIiwiY3Jvc3NPcmlnaW4iOmZhbHNlfQ",
+            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoicVhIcHcyOWlzemIxcFp0X1BTNDRBaEpPSTlnclRRNXMtdFd1R0FtZXY0NCIsIm9yaWdpbiI6Imh0dHBzOi8vZXZpbC5leGFtcGxlIiwiY3Jvc3NPcmlnaW4iOmZhbHNlfQ",
             "authenticatorData": "lO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NEFAAAABQ",
-            "signature": "MEQCIHCdqhHFevc5u1ijmhO9viwVtjsiDC7emVIROslvnr0ZAiADBmUX7PReCmz_KDmh83oz_dFwnHtCPiZjr8UipdkMgA",
-            "userHandle": "ZjQzM2U4YzUtNjg3Zi00NTA2LWI4NzktODIwZGEzZTgwNjM3"
+            "signature": "MEYCIQCAlBVVUrMUKk3NCBq2z7QNfrL1SJUjPsj2TmX-wVTYmQIhAMzgjN3ajE85nwG4BzlcJVFr26ZQxJ5Uu2GzICe31e_W",
+            "userHandle": "OTUzYjRmYWUtMjEyOC00ZTEwLTk3ZTUtYjY0NGI2OWJlNTk0"
           }
         }
       },
@@ -1192,20 +1196,20 @@
       },
       "status": 200,
       "response": {
-        "flowId": "9f1eee26-bdfb-46f7-8134-53afa5c85792",
+        "flowId": "52bd6468-b7cb-4e9f-bd53-ef1abbdc4bea",
         "options": {
           "rpId": "aleph-passkey-intro.rlatmdgus4141.chatgpt.site",
-          "challenge": "VXghJ_fKXwi7VajvOeuNlHgBrFWIHfQ_C3acvMXawrU",
+          "challenge": "T9bIS7FmUYf_Cv01vipm5gVN_o3W2RbxGJ9OhCtnOds",
           "allowCredentials": [
             {
-              "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+              "id": "R9zjhLqzgf968riJ5LxEWbVckreNE0TIqeD7FmTrs40",
               "transports": [
                 "internal"
               ],
               "type": "public-key"
             },
             {
-              "id": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM",
+              "id": "nWQvDD9JHzsYxX1JMidxquOJp758f71_9LiW2Wj1Xfc",
               "transports": [
                 "internal"
               ],
@@ -1224,18 +1228,18 @@
       "method": "POST",
       "request": {
         "action": "login-verify",
-        "flowId": "9f1eee26-bdfb-46f7-8134-53afa5c85792",
+        "flowId": "52bd6468-b7cb-4e9f-bd53-ef1abbdc4bea",
         "response": {
-          "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
-          "rawId": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+          "id": "R9zjhLqzgf968riJ5LxEWbVckreNE0TIqeD7FmTrs40",
+          "rawId": "R9zjhLqzgf968riJ5LxEWbVckreNE0TIqeD7FmTrs40",
           "type": "public-key",
           "authenticatorAttachment": "platform",
           "clientExtensionResults": {},
           "response": {
-            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiVlhnaEpfZktYd2k3VmFqdk9ldU5sSGdCckZXSUhmUV9DM2Fjdk1YYXdyVSIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
+            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiVDliSVM3Rm1VWWZfQ3YwMXZpcG01Z1ZOX28zVzJSYnhHSjlPaEN0bk9kcyIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
             "authenticatorData": "lO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NEBAAAABg",
-            "signature": "MEUCIAaLqdrY7BusTnyafPOhALGTKWnt9MDFvuoqxHzla3uIAiEA-6Lknx-X2OLDt0_oBVsWHissUpge4c9rvUkpXN-sk4k",
-            "userHandle": "ZjQzM2U4YzUtNjg3Zi00NTA2LWI4NzktODIwZGEzZTgwNjM3"
+            "signature": "MEUCIQCwl9CnGcsYSO6DJ5-EmYd0nncapyww0AtkFimJ5jNjDgIgbJkZJRqRl2rw5n2RYpNmueF2g1X0m6h5HgyT1acFhPE",
+            "userHandle": "OTUzYjRmYWUtMjEyOC00ZTEwLTk3ZTUtYjY0NGI2OWJlNTk0"
           }
         }
       },
@@ -1269,20 +1273,20 @@
       },
       "status": 200,
       "response": {
-        "flowId": "844fba30-ef6d-4820-aa70-6c9126d2184c",
+        "flowId": "f9b55166-1c18-4845-bf97-9b866e61f6fd",
         "options": {
           "rpId": "aleph-passkey-intro.rlatmdgus4141.chatgpt.site",
-          "challenge": "agaLgBLLa6JVyAvg2W1n1yqR3NbNm2GA9feouxnH8yk",
+          "challenge": "7pPSjOI3qCpy3DQXQrVvl4WVnh2Zhmm6C5brL4t_Zpk",
           "allowCredentials": [
             {
-              "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+              "id": "R9zjhLqzgf968riJ5LxEWbVckreNE0TIqeD7FmTrs40",
               "transports": [
                 "internal"
               ],
               "type": "public-key"
             },
             {
-              "id": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM",
+              "id": "nWQvDD9JHzsYxX1JMidxquOJp758f71_9LiW2Wj1Xfc",
               "transports": [
                 "internal"
               ],
@@ -1301,18 +1305,18 @@
       "method": "POST",
       "request": {
         "action": "login-verify",
-        "flowId": "844fba30-ef6d-4820-aa70-6c9126d2184c",
+        "flowId": "f9b55166-1c18-4845-bf97-9b866e61f6fd",
         "response": {
-          "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
-          "rawId": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+          "id": "R9zjhLqzgf968riJ5LxEWbVckreNE0TIqeD7FmTrs40",
+          "rawId": "R9zjhLqzgf968riJ5LxEWbVckreNE0TIqeD7FmTrs40",
           "type": "public-key",
           "authenticatorAttachment": "platform",
           "clientExtensionResults": {},
           "response": {
-            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiYWdhTGdCTExhNkpWeUF2ZzJXMW4xeXFSM05iTm0yR0E5ZmVvdXhuSDh5ayIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
+            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiN3BQU2pPSTNxQ3B5M0RRWFFyVnZsNFdWbmgyWmhtbTZDNWJyTDR0X1pwayIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
             "authenticatorData": "lO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NEFAAAABw",
-            "signature": "MEQCIDjc2LNouRrPFEYUAYbVzEh_L3QgUZPd1n4Kaoq0QTw8AiBhIPpoIFFxsxTbfmQ5pSKtAA6JGxf700TQOhQM3kciUg",
-            "userHandle": "ZjQzM2U4YzUtNjg3Zi00NTA2LWI4NzktODIwZGEzZTgwNjM3"
+            "signature": "MEUCIB9BBL7ClQja6cmbAaoI541nWUrnULEFKpUIa11MHAUbAiEAvTXPmI88SuPbpaG7DukET1sFgBSiCQeX1KzSXhHVLxA",
+            "userHandle": "OTUzYjRmYWUtMjEyOC00ZTEwLTk3ZTUtYjY0NGI2OWJlNTk0"
           }
         }
       },
@@ -1332,20 +1336,20 @@
       },
       "status": 200,
       "response": {
-        "flowId": "70bdbe2d-131e-4444-ac6b-9f99b4d725f0",
+        "flowId": "07c368b8-c0b9-4d6b-8d06-f6cc9bc8c224",
         "options": {
           "rpId": "aleph-passkey-intro.rlatmdgus4141.chatgpt.site",
-          "challenge": "0ldh4Yi3Mbqg_McBBUwgTm2z64QC6pb48lamSbbzP14",
+          "challenge": "hX-Q_hZzx2KR36t2n-JJSpUOHpwYg4LMxoukE9SWGrk",
           "allowCredentials": [
             {
-              "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+              "id": "R9zjhLqzgf968riJ5LxEWbVckreNE0TIqeD7FmTrs40",
               "transports": [
                 "internal"
               ],
               "type": "public-key"
             },
             {
-              "id": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM",
+              "id": "nWQvDD9JHzsYxX1JMidxquOJp758f71_9LiW2Wj1Xfc",
               "transports": [
                 "internal"
               ],
@@ -1364,18 +1368,18 @@
       "method": "POST",
       "request": {
         "action": "login-verify",
-        "flowId": "70bdbe2d-131e-4444-ac6b-9f99b4d725f0",
+        "flowId": "07c368b8-c0b9-4d6b-8d06-f6cc9bc8c224",
         "response": {
-          "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
-          "rawId": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+          "id": "R9zjhLqzgf968riJ5LxEWbVckreNE0TIqeD7FmTrs40",
+          "rawId": "R9zjhLqzgf968riJ5LxEWbVckreNE0TIqeD7FmTrs40",
           "type": "public-key",
           "authenticatorAttachment": "platform",
           "clientExtensionResults": {},
           "response": {
-            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiMGxkaDRZaTNNYnFnX01jQkJVd2dUbTJ6NjRRQzZwYjQ4bGFtU2JielAxNCIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
+            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiaFgtUV9oWnp4MktSMzZ0Mm4tSkpTcFVPSHB3WWc0TE14b3VrRTlTV0dyayIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
             "authenticatorData": "lO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NEFAAAACA",
-            "signature": "MEYCIQChuV22LSxIC62WUiZC1NsNOjO9QX7OwZ4AxgaBEISd1AIhAL6KDOMp1TqnLyAqMmqdhl_Ks2_VF5OjyXEIMfswKL6t",
-            "userHandle": "ZjQzM2U4YzUtNjg3Zi00NTA2LWI4NzktODIwZGEzZTgwNjM3"
+            "signature": "MEQCIGnKoipWHHNxQfdYPe5TS9KNOFGQi3LnkQHQdNJql9rtAiBrPt20_Y1UpsR_iUnGSwkmPflNGfeJMtVxw527DXleVQ",
+            "userHandle": "OTUzYjRmYWUtMjEyOC00ZTEwLTk3ZTUtYjY0NGI2OWJlNTk0"
           }
         }
       },
@@ -1393,20 +1397,20 @@
       "status": 200,
       "response": {
         "synthetic": true,
-        "owner": "f433e8c5-687f-4506-b879-820da3e80637",
+        "owner": "953b4fae-2128-4e10-97e5-b644b69be594",
         "items": [
           {
-            "id": "165fc222-be23-45f2-b3be-955ceaa24ab8",
+            "id": "4a57d382-6f8e-4c66-a050-a1fb51c5945e",
             "title": "개인 회고",
             "body": "가상 회고 test-alpha: 근거를 먼저 확인하고 결론을 적는다."
           },
           {
-            "id": "71056c0e-40c6-4a63-89e8-986e9b1f8fe9",
+            "id": "6d49baba-026f-453b-9617-ccb8be1444d9",
             "title": "지원 준비 목록",
             "body": "가상 조직 A·B의 공개 채용 정보를 비교한다."
           },
           {
-            "id": "d6c6200d-0b25-4307-9ae4-095551c70dba",
+            "id": "aa607e83-aa71-4acf-b2b0-51f582c75028",
             "title": "프로젝트 메모",
             "body": "가상 프로젝트 test-alpha: 장비 점검 절차를 정리한다."
           }
@@ -1423,7 +1427,13 @@
       },
       "status": 200,
       "response": {
-        "loggedOut": true
+        "loggedOut": true,
+        "sessionReplay": {
+          "scope": "동일한 HttpOnly 쿠키를 사용한 서버 내부 API 검사. 브라우저의 추가 HTTP 요청과 구분.",
+          "cookie": "[원문 가림]",
+          "beforeStatus": 200,
+          "afterStatus": 401
+        }
       },
       "cookie": "[값 생략]",
       "setCookie": "[값 생략]"
@@ -1448,20 +1458,20 @@
       },
       "status": 200,
       "response": {
-        "flowId": "da512310-fb05-4bd8-ad16-7526a2f13141",
+        "flowId": "8d9d0392-d8aa-4b1f-abdc-48f7bde0953f",
         "options": {
           "rpId": "aleph-passkey-intro.rlatmdgus4141.chatgpt.site",
-          "challenge": "X7kmVVRJWlmLwQS4p5U96jFTDkCCSHVulq_yu1em-yQ",
+          "challenge": "EJEoM_ZCCs5iiJB3tvepILfN5Owz1S1qIUeQQqTasrA",
           "allowCredentials": [
             {
-              "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+              "id": "R9zjhLqzgf968riJ5LxEWbVckreNE0TIqeD7FmTrs40",
               "transports": [
                 "internal"
               ],
               "type": "public-key"
             },
             {
-              "id": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM",
+              "id": "nWQvDD9JHzsYxX1JMidxquOJp758f71_9LiW2Wj1Xfc",
               "transports": [
                 "internal"
               ],
@@ -1480,18 +1490,18 @@
       "method": "POST",
       "request": {
         "action": "login-verify",
-        "flowId": "da512310-fb05-4bd8-ad16-7526a2f13141",
+        "flowId": "8d9d0392-d8aa-4b1f-abdc-48f7bde0953f",
         "response": {
-          "id": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM",
-          "rawId": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM",
+          "id": "nWQvDD9JHzsYxX1JMidxquOJp758f71_9LiW2Wj1Xfc",
+          "rawId": "nWQvDD9JHzsYxX1JMidxquOJp758f71_9LiW2Wj1Xfc",
           "type": "public-key",
           "authenticatorAttachment": "platform",
           "clientExtensionResults": {},
           "response": {
-            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiWDdrbVZWUkpXbG1Md1FTNHA1VTk2akZURGtDQ1NIVnVscV95dTFlbS15USIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
+            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiRUpFb01fWkNDczVpaUpCM3R2ZXBJTGZONU93ejFTMXFJVWVRUXFUYXNyQSIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
             "authenticatorData": "lO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NEFAAAAAQ",
-            "signature": "MEYCIQDMG6OSoVWJR4IVjq_J889057rqFkLhM-RL_DlRp6fQtwIhANvOeHxvdN_zgDqoQcUncNc0lhBAN2Xzg_kD6F_2EWbY",
-            "userHandle": "ZjQzM2U4YzUtNjg3Zi00NTA2LWI4NzktODIwZGEzZTgwNjM3"
+            "signature": "MEUCIEhNiaXJb3PLP78wp-U5tl-HaWXBmRXmjqrRJWN4rqgIAiEAsM-_yeBc4qTRWl00nTqY9jCufiw_XIwOWLrfjfVjxaI",
+            "userHandle": "OTUzYjRmYWUtMjEyOC00ZTEwLTk3ZTUtYjY0NGI2OWJlNTk0"
           }
         }
       },
@@ -1507,7 +1517,7 @@
       "method": "POST",
       "request": {
         "action": "delete-passkey",
-        "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM"
+        "id": "R9zjhLqzgf968riJ5LxEWbVckreNE0TIqeD7FmTrs40"
       },
       "status": 200,
       "response": {
@@ -1528,13 +1538,13 @@
       },
       "status": 200,
       "response": {
-        "flowId": "db7b7f35-2662-4229-abbf-7ddbc3f5bfdb",
+        "flowId": "74f5b197-2ff5-471b-8290-0d7fa812e0a0",
         "options": {
           "rpId": "aleph-passkey-intro.rlatmdgus4141.chatgpt.site",
-          "challenge": "zgNvIYgbXZDmKQpOPJ7CVv7qO5fLbvrI7G1ZOg7H6lE",
+          "challenge": "3ifq0BsMbRwdx9gJPjt14K7zjLvE_A6Qk1CaXiZ8180",
           "allowCredentials": [
             {
-              "id": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM",
+              "id": "nWQvDD9JHzsYxX1JMidxquOJp758f71_9LiW2Wj1Xfc",
               "transports": [
                 "internal"
               ],
@@ -1553,18 +1563,18 @@
       "method": "POST",
       "request": {
         "action": "login-verify",
-        "flowId": "db7b7f35-2662-4229-abbf-7ddbc3f5bfdb",
+        "flowId": "74f5b197-2ff5-471b-8290-0d7fa812e0a0",
         "response": {
-          "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
-          "rawId": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+          "id": "R9zjhLqzgf968riJ5LxEWbVckreNE0TIqeD7FmTrs40",
+          "rawId": "R9zjhLqzgf968riJ5LxEWbVckreNE0TIqeD7FmTrs40",
           "type": "public-key",
           "authenticatorAttachment": "platform",
           "clientExtensionResults": {},
           "response": {
-            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiemdOdklZZ2JYWkRtS1FwT1BKN0NWdjdxTzVmTGJ2ckk3RzFaT2c3SDZsRSIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
+            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiM2lmcTBCc01iUndkeDlnSlBqdDE0Szd6akx2RV9BNlFrMUNhWGlaODE4MCIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
             "authenticatorData": "lO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NEFAAAACQ",
-            "signature": "MEQCIHN2gc-gUZV1TbW_gkmAVJR8p7WpgPRLuvtfhZyhUW_XAiA4WkNYJiffooSrjFN4A2ubkFG2iRVuvC6-C9cBUY8Qiw",
-            "userHandle": "ZjQzM2U4YzUtNjg3Zi00NTA2LWI4NzktODIwZGEzZTgwNjM3"
+            "signature": "MEUCIQDcCddRdMAK7vaj8YA99H_RzeeJkk1XwZ8vhRglsGu-QgIgHf50PYf1YdyKhKxBeidzzYLpXGQMghCyjYGjUuzjOU0",
+            "userHandle": "OTUzYjRmYWUtMjEyOC00ZTEwLTk3ZTUtYjY0NGI2OWJlNTk0"
           }
         }
       },
@@ -1584,13 +1594,13 @@
       },
       "status": 200,
       "response": {
-        "flowId": "7a3be4a5-727d-44fa-900e-1e7c4eb901ff",
+        "flowId": "d2ea7fe3-5f55-4101-8a32-6edd40cbbb58",
         "options": {
           "rpId": "aleph-passkey-intro.rlatmdgus4141.chatgpt.site",
-          "challenge": "wFghG-jDKlJmShKOVEQwSrK4iD6LnmObcxdFN1Cccww",
+          "challenge": "WjiVv1Zg2l--8rzb9A8UD54Yh2yIeP2PpCf8ja4EIho",
           "allowCredentials": [
             {
-              "id": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM",
+              "id": "nWQvDD9JHzsYxX1JMidxquOJp758f71_9LiW2Wj1Xfc",
               "transports": [
                 "internal"
               ],
@@ -1609,18 +1619,18 @@
       "method": "POST",
       "request": {
         "action": "login-verify",
-        "flowId": "7a3be4a5-727d-44fa-900e-1e7c4eb901ff",
+        "flowId": "d2ea7fe3-5f55-4101-8a32-6edd40cbbb58",
         "response": {
-          "id": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM",
-          "rawId": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM",
+          "id": "nWQvDD9JHzsYxX1JMidxquOJp758f71_9LiW2Wj1Xfc",
+          "rawId": "nWQvDD9JHzsYxX1JMidxquOJp758f71_9LiW2Wj1Xfc",
           "type": "public-key",
           "authenticatorAttachment": "platform",
           "clientExtensionResults": {},
           "response": {
-            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoid0ZnaEctakRLbEptU2hLT1ZFUXdTcks0aUQ2TG5tT2JjeGRGTjFDY2N3dyIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
+            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiV2ppVnYxWmcybC0tOHJ6YjlBOFVENTRZaDJ5SWVQMlBwQ2Y4amE0RUlobyIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
             "authenticatorData": "lO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NEFAAAAAg",
-            "signature": "MEQCIFk2Tb4f9NYoDeVVQs5tJGGc2SaSzGPgLYosYTCnu6h2AiBmYGu2ivPaDfZYv_7i_aT65uuPzyJt4Ak6UZ7q8bgD5g",
-            "userHandle": "ZjQzM2U4YzUtNjg3Zi00NTA2LWI4NzktODIwZGEzZTgwNjM3"
+            "signature": "MEQCIAiqIiagVYiA7vX7vjj9N82cQEVGeFOOnxpSSLNLW9MuAiAnRzBmcZQnmE7LkJY5FITe1YqhitXUwlX4CCR4JfOq6g",
+            "userHandle": "OTUzYjRmYWUtMjEyOC00ZTEwLTk3ZTUtYjY0NGI2OWJlNTk0"
           }
         }
       },
@@ -1636,7 +1646,7 @@
       "method": "POST",
       "request": {
         "action": "delete-passkey",
-        "id": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM"
+        "id": "nWQvDD9JHzsYxX1JMidxquOJp758f71_9LiW2Wj1Xfc"
       },
       "status": 409,
       "response": {
@@ -1650,7 +1660,7 @@
       "method": "POST",
       "request": {
         "action": "delete-passkey",
-        "id": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM",
+        "id": "nWQvDD9JHzsYxX1JMidxquOJp758f71_9LiW2Wj1Xfc",
         "confirmLast": true
       },
       "status": 200,
@@ -1715,15 +1725,15 @@
       },
       "status": 200,
       "response": {
-        "flowId": "124b4824-bbf0-4f22-a3f5-f173acfbfad4",
+        "flowId": "f8e898a2-4ae3-4020-9640-ab2c8793df68",
         "options": {
-          "challenge": "8DA_1TQiKeZBIkncVj05tqg4YVvu2t4rukq48k9FxYU",
+          "challenge": "Qiw0vKdpPRjWMEHK-gZ3b_aKXcw-QbV4m1DYf3-oVlg",
           "rp": {
             "name": "나만의 소개 메모",
             "id": "aleph-passkey-intro.rlatmdgus4141.chatgpt.site"
           },
           "user": {
-            "id": "YzI1MjkxZTktMTA0YS00MTc3LWJlYjUtYzU2OTI4Y2Y1OWIw",
+            "id": "MWYyZTE3Y2UtNDcyOC00OWU4LWEyN2UtYTI0MWQ4OGJmYzY0",
             "name": "test-bad-origin",
             "displayName": ""
           },
@@ -1759,16 +1769,16 @@
       "method": "POST",
       "request": {
         "action": "register-verify",
-        "flowId": "124b4824-bbf0-4f22-a3f5-f173acfbfad4",
+        "flowId": "f8e898a2-4ae3-4020-9640-ab2c8793df68",
         "response": {
-          "id": "ud-_AawrZ8W10z7i02uJH6aOgQZQ7XyE3r3fzqP9MIM",
-          "rawId": "ud-_AawrZ8W10z7i02uJH6aOgQZQ7XyE3r3fzqP9MIM",
+          "id": "5qdnVo9VB7QxpjzIUt8Ke_faCf0er6Seckbfyidup98",
+          "rawId": "5qdnVo9VB7QxpjzIUt8Ke_faCf0er6Seckbfyidup98",
           "type": "public-key",
           "authenticatorAttachment": "platform",
           "clientExtensionResults": {},
           "response": {
-            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uY3JlYXRlIiwiY2hhbGxlbmdlIjoiOERBXzFUUWlLZVpCSWtuY1ZqMDV0cWc0WVZ2dTJ0NHJ1a3E0OGs5RnhZVSIsIm9yaWdpbiI6Imh0dHBzOi8vZXZpbC5leGFtcGxlIiwiY3Jvc3NPcmlnaW4iOmZhbHNlfQ",
-            "attestationObject": "o2NmbXRkbm9uZWdhdHRTdG10oGhhdXRoRGF0YViklO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NFFAAAAAAAAAAAAAAAAAAAAAAAAAAAAILnfvwGsK2fFtdM-4tNriR-mjoEGUO18hN69386j_TCDpQECAyYgASFYIHvylxvrpgSc6Z0FFnEAs_Ld_7y-HxQOmJPJgjfZvEecIlggUuVEv4T1PLe9OtP-K4X2S5julgiAG_WB1n7OIyKSR4I",
+            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uY3JlYXRlIiwiY2hhbGxlbmdlIjoiUWl3MHZLZHBQUmpXTUVISy1nWjNiX2FLWGN3LVFiVjRtMURZZjMtb1ZsZyIsIm9yaWdpbiI6Imh0dHBzOi8vZXZpbC5leGFtcGxlIiwiY3Jvc3NPcmlnaW4iOmZhbHNlfQ",
+            "attestationObject": "o2NmbXRkbm9uZWdhdHRTdG10oGhhdXRoRGF0YViklO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NFFAAAAAAAAAAAAAAAAAAAAAAAAAAAAIOanZ1aPVQe0MaY8yFLfCnv32gn9Hq-knnJG38onbqffpQECAyYgASFYIOVyd_o0YshxygS4_cIlY8XfiiHQB-vz-vzMfreuBoh-IlgguU4kVbyxFlg-NFTCWR6f_oV6P1t6AvtX3JmJt7GP3oQ",
             "transports": [
               "internal"
             ]
@@ -1786,7 +1796,7 @@
   "privateKey": "시험 메모리에서만 사용; 파일·요청·응답에 없음",
   "session": "모든 Cookie·Set-Cookie 값 생략",
   "summary": {
-    "passed": 41,
+    "passed": 42,
     "failed": 0,
     "accountDataCountsBeforeAndAfter": {
       "A": 3,

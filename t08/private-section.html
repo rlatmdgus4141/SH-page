@@ -34,6 +34,26 @@
     <button type="submit">패스키 하나 더 등록</button>
    </form>
   </div>
-  <div class="auth-support"><div class="auth-actions"><button id="export-evidence" class="secondary" type="button">이번 창의 확인 기록 내려받기</button><button id="probe-anonymous" class="secondary" type="button">로그인 없이 조회 확인</button></div><p>확인 기록에는 이 창에서 보낸 등록·로그인 요청과 응답, 공개키가 담깁니다. 쿠키·세션 원문과 개인키는 담지 않습니다. 창을 닫기 전에 내려받으세요. 비공개 메모는 서버에 보관됩니다.</p><p><a href="/auth-guide" target="_blank" rel="noopener">인증 구현 설명서</a><a href="#top">공개 소개로 돌아가기</a></p></div>
+  <div class="auth-support"><div class="auth-actions"><button id="export-evidence" class="secondary" type="button">이번 창의 확인 기록 내려받기</button><button id="probe-anonymous" class="secondary" type="button">로그인 없이 조회 확인</button></div><p>확인 기록에는 이 창에서 보낸 등록·로그인 요청과 응답, 공개키가 담깁니다. 쿠키·세션 원문과 개인키는 담지 않습니다. 창을 닫기 전에 내려받으세요. 비공개 메모는 서버에 보관됩니다.</p>
+   <details id="verification-tools"><summary>제출용 접근 차단 확인 도구</summary>
+    <p>두 시험 계정으로 번갈아 로그인해 실행하세요. 자료를 수정하거나 키를 삭제하지 않습니다. 결과는 이번 창의 확인 JSON에 함께 담깁니다.</p>
+    <p>현재 시험 계정 ID: <code id="my-account-id">로그인이 필요합니다.</code></p>
+    <form id="cross-account-form" class="auth-card">
+     <h3>서로의 자료 접근 확인</h3><label for="other-account-id">상대 시험 계정 ID</label><input id="other-account-id" required placeholder="상대 계정에서 표시한 ID 붙여넣기" maxlength="80">
+     <button type="submit" class="secondary">상대 자료 조회·소유자 위조 확인</button>
+    </form>
+    <form id="foreign-key-form" class="auth-card">
+     <h3>내 패스키로 상대 계정 열기 확인</h3><label for="other-alias">상대 시험 계정 별칭</label><input id="other-alias" required pattern="[a-z0-9_-]{4,40}" maxlength="40" placeholder="예: t08-demo-a">
+     <small>다음 기기 창에서 현재 로그인한 계정의 패스키를 선택하세요. 서버가 상대 계정의 키와 구분해 거절하는지 확인합니다.</small><button type="submit" class="secondary">내 키로 상대 계정 로그인 요청</button>
+    </form>
+    <div class="auth-actions"><button id="probe-signature" class="secondary" type="button">변조한 서명 차단 확인</button><button id="probe-replay" class="secondary" type="button">방금 사용한 로그인 질문 재전송</button></div>
+    <small>질문 재전송은 이 창에서 로그인한 직후 실행하세요. 먼저 변조 검사를 했다면 로그아웃 후 다시 로그인하고 실행하세요.</small>
+    <form id="deleted-key-form" class="auth-card">
+     <h3>삭제한 키의 로그인 거절 확인</h3><label for="deleted-key-id">삭제한 패스키 ID</label><input id="deleted-key-id" required pattern="[A-Za-z0-9_-]{8,1024}" maxlength="1024" placeholder="삭제 전 확인 JSON의 credential.id">
+     <small>서버에서 삭제했지만 기기에 남아 있는 시험 키로 서명합니다. 기기에서도 삭제했다면 이 시험을 실행할 수 없습니다.</small><button type="submit" class="secondary">삭제한 키로 로그인 요청</button>
+    </form>
+    <p id="verification-result" role="status" aria-live="polite"></p>
+   </details>
+   <p><a href="/auth-guide" target="_blank" rel="noopener">인증 구현 설명서</a><a href="#top">공개 소개로 돌아가기</a></p></div>
  </div>
 </section>
