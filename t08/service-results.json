@@ -1,0 +1,1796 @@
+{
+  "task": "T08",
+  "scope": "로컬 SQLite + 실제 WebAuthn 암호 검증. 소프트웨어 인증기 fixture이며 실제 기기·배포 브라우저 검증이 아님.",
+  "at": "2026-10-06T00:16:43.323Z",
+  "checks": [
+    {
+      "name": "익명 비공개 API 401",
+      "passed": true
+    },
+    {
+      "name": "공개 원본 전체 내용 유지",
+      "passed": true
+    },
+    {
+      "name": "익명 HTML·JS에 비공개 메모 본문 없음",
+      "passed": true
+    },
+    {
+      "name": "비밀번호 입력 칸 없음",
+      "passed": true
+    },
+    {
+      "name": "등록 challenge 매번 다름",
+      "passed": true
+    },
+    {
+      "name": "등록 확인 전 challenge 서버 보존",
+      "passed": true
+    },
+    {
+      "name": "취소 후 계정·패스키 저장 없음",
+      "passed": true
+    },
+    {
+      "name": "등록 성공 공개키 저장",
+      "passed": true
+    },
+    {
+      "name": "등록 요청에 개인키 없음",
+      "passed": true
+    },
+    {
+      "name": "가상 메모 세 개",
+      "passed": true
+    },
+    {
+      "name": "두 패스키 이름·등록일 보존",
+      "passed": true
+    },
+    {
+      "name": "A에서 B 조회 403",
+      "passed": true
+    },
+    {
+      "name": "B에서 A 조회 403",
+      "passed": true
+    },
+    {
+      "name": "거절 전후 양쪽 자료 건수 동일",
+      "passed": true
+    },
+    {
+      "name": "본문 소유자 위조해도 내 자료만 반환",
+      "passed": true
+    },
+    {
+      "name": "다른 계정 키 삭제 403",
+      "passed": true
+    },
+    {
+      "name": "다른 계정 패스키 로그인 401",
+      "passed": true
+    },
+    {
+      "name": "올바른 서명 로그인 200",
+      "passed": true
+    },
+    {
+      "name": "사용한 challenge 재사용 409",
+      "passed": true
+    },
+    {
+      "name": "일회용 질문 첫 요청 성공",
+      "passed": true
+    },
+    {
+      "name": "원래 flow cookie를 유지해도 재사용 409",
+      "passed": true
+    },
+    {
+      "name": "틀린 서명 401",
+      "passed": true
+    },
+    {
+      "name": "로그인 challenge 매번 다름",
+      "passed": true
+    },
+    {
+      "name": "틀린 challenge 401",
+      "passed": true
+    },
+    {
+      "name": "틀린 origin 401",
+      "passed": true
+    },
+    {
+      "name": "본인 확인 UV 없는 서명 401",
+      "passed": true
+    },
+    {
+      "name": "POST 다른 Origin 403",
+      "passed": true
+    },
+    {
+      "name": "만료 challenge 410",
+      "passed": true
+    },
+    {
+      "name": "로그아웃 전 같은 세션 조회 200",
+      "passed": true
+    },
+    {
+      "name": "로그아웃한 세션 원문 재사용 401",
+      "passed": true
+    },
+    {
+      "name": "키 하나 삭제 200",
+      "passed": true
+    },
+    {
+      "name": "삭제한 키 로그인 401",
+      "passed": true
+    },
+    {
+      "name": "남은 키 로그인 200",
+      "passed": true
+    },
+    {
+      "name": "마지막 키는 명시 확인 없이 삭제 409",
+      "passed": true
+    },
+    {
+      "name": "마지막 키 명시 확인 삭제 200",
+      "passed": true
+    },
+    {
+      "name": "마지막 키 삭제 후 세션 401",
+      "passed": true
+    },
+    {
+      "name": "키 0개 계정 재로그인 401",
+      "passed": true
+    },
+    {
+      "name": "키 0개 계정 익명 재등록 우회 409",
+      "passed": true
+    },
+    {
+      "name": "틀린 origin 등록 401",
+      "passed": true
+    },
+    {
+      "name": "실패한 등록 계정 저장 없음",
+      "passed": true
+    },
+    {
+      "name": "세션 DB에는 원문 없음",
+      "passed": true
+    }
+  ],
+  "events": [
+    {
+      "path": "/api/private",
+      "method": "GET",
+      "request": null,
+      "status": 401,
+      "response": {
+        "error": "패스키 로그인이 필요합니다."
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "register-options",
+        "username": "cancel-demo",
+        "name": "취소 키",
+        "storage": "기타·확인 중"
+      },
+      "status": 200,
+      "response": {
+        "flowId": "7f7b690b-8a01-4422-901f-1bf624878bfe",
+        "options": {
+          "challenge": "LDGVUiOBavnlxkXtCwBVNwyohmMmG4nOjV5N2ozFkXg",
+          "rp": {
+            "name": "나만의 소개 메모",
+            "id": "aleph-passkey-intro.rlatmdgus4141.chatgpt.site"
+          },
+          "user": {
+            "id": "ZWQzZGY1ZGUtYjM3My00MDg1LTg1NzEtYjJmZDc1ZjU5MDYy",
+            "name": "cancel-demo",
+            "displayName": ""
+          },
+          "pubKeyCredParams": [
+            {
+              "alg": -7,
+              "type": "public-key"
+            },
+            {
+              "alg": -257,
+              "type": "public-key"
+            }
+          ],
+          "timeout": 60000,
+          "attestation": "none",
+          "excludeCredentials": [],
+          "authenticatorSelection": {
+            "residentKey": "required",
+            "userVerification": "required",
+            "requireResidentKey": true
+          },
+          "extensions": {
+            "credProps": true
+          },
+          "hints": []
+        }
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "register-options",
+        "username": "cancel-demo",
+        "name": "취소 키",
+        "storage": "기타·확인 중"
+      },
+      "status": 200,
+      "response": {
+        "flowId": "ac5a1fe1-7c93-4df4-a984-270579f1d63e",
+        "options": {
+          "challenge": "e9L-b_NmrxTJAaCSEFLcHAuJmxjAGMrxd6ojj64bD9w",
+          "rp": {
+            "name": "나만의 소개 메모",
+            "id": "aleph-passkey-intro.rlatmdgus4141.chatgpt.site"
+          },
+          "user": {
+            "id": "MWJjNmQ2M2MtZmI3OC00MTU4LWEyNjYtYzliODE5NGViYjZm",
+            "name": "cancel-demo",
+            "displayName": ""
+          },
+          "pubKeyCredParams": [
+            {
+              "alg": -7,
+              "type": "public-key"
+            },
+            {
+              "alg": -257,
+              "type": "public-key"
+            }
+          ],
+          "timeout": 60000,
+          "attestation": "none",
+          "excludeCredentials": [],
+          "authenticatorSelection": {
+            "residentKey": "required",
+            "userVerification": "required",
+            "requireResidentKey": true
+          },
+          "extensions": {
+            "credProps": true
+          },
+          "hints": []
+        }
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "cancel",
+        "flowId": "ac5a1fe1-7c93-4df4-a984-270579f1d63e"
+      },
+      "status": 200,
+      "response": {
+        "cancelled": true,
+        "credentialSaved": false
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "register-options",
+        "username": "test-alpha",
+        "name": "시험 A-노트북",
+        "storage": "기타·확인 중"
+      },
+      "status": 200,
+      "response": {
+        "flowId": "30594a1f-c77e-44b8-899b-eed89f8fa7cb",
+        "options": {
+          "challenge": "NRrJFfaIw0bSaXTLs2ogD7COqBflIEqFc9COSBXkbeE",
+          "rp": {
+            "name": "나만의 소개 메모",
+            "id": "aleph-passkey-intro.rlatmdgus4141.chatgpt.site"
+          },
+          "user": {
+            "id": "ZjQzM2U4YzUtNjg3Zi00NTA2LWI4NzktODIwZGEzZTgwNjM3",
+            "name": "test-alpha",
+            "displayName": ""
+          },
+          "pubKeyCredParams": [
+            {
+              "alg": -7,
+              "type": "public-key"
+            },
+            {
+              "alg": -257,
+              "type": "public-key"
+            }
+          ],
+          "timeout": 60000,
+          "attestation": "none",
+          "excludeCredentials": [],
+          "authenticatorSelection": {
+            "residentKey": "required",
+            "userVerification": "required",
+            "requireResidentKey": true
+          },
+          "extensions": {
+            "credProps": true
+          },
+          "hints": []
+        }
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "register-verify",
+        "flowId": "30594a1f-c77e-44b8-899b-eed89f8fa7cb",
+        "response": {
+          "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+          "rawId": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+          "type": "public-key",
+          "authenticatorAttachment": "platform",
+          "clientExtensionResults": {},
+          "response": {
+            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uY3JlYXRlIiwiY2hhbGxlbmdlIjoiTlJySkZmYUl3MGJTYVhUTHMyb2dEN0NPcUJmbElFcUZjOUNPU0JYa2JlRSIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
+            "attestationObject": "o2NmbXRkbm9uZWdhdHRTdG10oGhhdXRoRGF0YViklO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NFFAAAAAAAAAAAAAAAAAAAAAAAAAAAAIACrJt_BFF67ZcTkheL65kGzbwQMFFm4iz1VMih9lUWDpQECAyYgASFYIMJfp-6YWJwhkyuRgqU0aIXQKPCaPNnOsJXm7aBKJSASIlggb-Uv5r2lmMiHHVFHhbPSR9qzxwScJseyHz6oSl1KgTU",
+            "transports": [
+              "internal"
+            ]
+          }
+        }
+      },
+      "status": 200,
+      "response": {
+        "verified": true,
+        "accountCreated": true,
+        "credential": {
+          "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+          "name": "시험 A-노트북",
+          "storage": "기타·확인 중",
+          "public_key": "pQECAyYgASFYIMJfp-6YWJwhkyuRgqU0aIXQKPCaPNnOsJXm7aBKJSASIlggb-Uv5r2lmMiHHVFHhbPSR9qzxwScJseyHz6oSl1KgTU",
+          "created_at": "2026-10-06T00:16:43.336Z"
+        },
+        "privateKeyReceived": false
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "GET",
+      "request": null,
+      "status": 200,
+      "response": {
+        "authenticated": true,
+        "user": {
+          "id": "f433e8c5-687f-4506-b879-820da3e80637",
+          "username": "test-alpha"
+        },
+        "passkeys": [
+          {
+            "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+            "name": "시험 A-노트북",
+            "storage": "기타·확인 중",
+            "device_type": "singleDevice",
+            "backed_up": 0,
+            "created_at": "2026-10-06T00:16:43.336Z",
+            "public_key": "pQECAyYgASFYIMJfp-6YWJwhkyuRgqU0aIXQKPCaPNnOsJXm7aBKJSASIlggb-Uv5r2lmMiHHVFHhbPSR9qzxwScJseyHz6oSl1KgTU"
+          }
+        ],
+        "sessionExpires": "2026-10-06T12:16:43.337Z"
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/private",
+      "method": "GET",
+      "request": null,
+      "status": 200,
+      "response": {
+        "synthetic": true,
+        "owner": "f433e8c5-687f-4506-b879-820da3e80637",
+        "items": [
+          {
+            "id": "165fc222-be23-45f2-b3be-955ceaa24ab8",
+            "title": "개인 회고",
+            "body": "가상 회고 test-alpha: 근거를 먼저 확인하고 결론을 적는다."
+          },
+          {
+            "id": "71056c0e-40c6-4a63-89e8-986e9b1f8fe9",
+            "title": "지원 준비 목록",
+            "body": "가상 조직 A·B의 공개 채용 정보를 비교한다."
+          },
+          {
+            "id": "d6c6200d-0b25-4307-9ae4-095551c70dba",
+            "title": "프로젝트 메모",
+            "body": "가상 프로젝트 test-alpha: 장비 점검 절차를 정리한다."
+          }
+        ]
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "register-options",
+        "username": "test-alpha",
+        "name": "시험 A-보조 키",
+        "storage": "기타·확인 중"
+      },
+      "status": 200,
+      "response": {
+        "flowId": "33c2312c-1c63-43f6-8a87-9ed7c8c18579",
+        "options": {
+          "challenge": "TNC_f69P64naNeOgaKkH49SoPaMVyysF74E5bvY_zCo",
+          "rp": {
+            "name": "나만의 소개 메모",
+            "id": "aleph-passkey-intro.rlatmdgus4141.chatgpt.site"
+          },
+          "user": {
+            "id": "ZjQzM2U4YzUtNjg3Zi00NTA2LWI4NzktODIwZGEzZTgwNjM3",
+            "name": "test-alpha",
+            "displayName": ""
+          },
+          "pubKeyCredParams": [
+            {
+              "alg": -7,
+              "type": "public-key"
+            },
+            {
+              "alg": -257,
+              "type": "public-key"
+            }
+          ],
+          "timeout": 60000,
+          "attestation": "none",
+          "excludeCredentials": [
+            {
+              "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+              "transports": [
+                "internal"
+              ],
+              "type": "public-key"
+            }
+          ],
+          "authenticatorSelection": {
+            "residentKey": "required",
+            "userVerification": "required",
+            "requireResidentKey": true
+          },
+          "extensions": {
+            "credProps": true
+          },
+          "hints": []
+        }
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "register-verify",
+        "flowId": "33c2312c-1c63-43f6-8a87-9ed7c8c18579",
+        "response": {
+          "id": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM",
+          "rawId": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM",
+          "type": "public-key",
+          "authenticatorAttachment": "platform",
+          "clientExtensionResults": {},
+          "response": {
+            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uY3JlYXRlIiwiY2hhbGxlbmdlIjoiVE5DX2Y2OVA2NG5hTmVPZ2FLa0g0OVNvUGFNVnl5c0Y3NEU1YnZZX3pDbyIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
+            "attestationObject": "o2NmbXRkbm9uZWdhdHRTdG10oGhhdXRoRGF0YViklO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NFFAAAAAAAAAAAAAAAAAAAAAAAAAAAAIIU4HCQFcNlcLy8pu_hEEGYjwBL6axJFYQBEKv0hjvAjpQECAyYgASFYIPundlhZ_YFMxvOtVcjGg5LiMiw33jTfBhWscFvh_2d_IlggWFxu2wLpI2M1a2for1TGtQnJ7S6CvyBfgvDXTs2TeT4",
+            "transports": [
+              "internal"
+            ]
+          }
+        }
+      },
+      "status": 200,
+      "response": {
+        "verified": true,
+        "accountCreated": false,
+        "credential": {
+          "id": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM",
+          "name": "시험 A-보조 키",
+          "storage": "기타·확인 중",
+          "public_key": "pQECAyYgASFYIPundlhZ_YFMxvOtVcjGg5LiMiw33jTfBhWscFvh_2d_IlggWFxu2wLpI2M1a2for1TGtQnJ7S6CvyBfgvDXTs2TeT4",
+          "created_at": "2026-10-06T00:16:43.342Z"
+        },
+        "privateKeyReceived": false
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "GET",
+      "request": null,
+      "status": 200,
+      "response": {
+        "authenticated": true,
+        "user": {
+          "id": "f433e8c5-687f-4506-b879-820da3e80637",
+          "username": "test-alpha"
+        },
+        "passkeys": [
+          {
+            "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+            "name": "시험 A-노트북",
+            "storage": "기타·확인 중",
+            "device_type": "singleDevice",
+            "backed_up": 0,
+            "created_at": "2026-10-06T00:16:43.336Z",
+            "public_key": "pQECAyYgASFYIMJfp-6YWJwhkyuRgqU0aIXQKPCaPNnOsJXm7aBKJSASIlggb-Uv5r2lmMiHHVFHhbPSR9qzxwScJseyHz6oSl1KgTU"
+          },
+          {
+            "id": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM",
+            "name": "시험 A-보조 키",
+            "storage": "기타·확인 중",
+            "device_type": "singleDevice",
+            "backed_up": 0,
+            "created_at": "2026-10-06T00:16:43.342Z",
+            "public_key": "pQECAyYgASFYIPundlhZ_YFMxvOtVcjGg5LiMiw33jTfBhWscFvh_2d_IlggWFxu2wLpI2M1a2for1TGtQnJ7S6CvyBfgvDXTs2TeT4"
+          }
+        ],
+        "sessionExpires": "2026-10-06T12:16:43.337Z"
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "register-options",
+        "username": "test-beta",
+        "name": "시험 B-키",
+        "storage": "기타·확인 중"
+      },
+      "status": 200,
+      "response": {
+        "flowId": "f05d4b80-2e9e-42b6-9119-7967656fe127",
+        "options": {
+          "challenge": "5P9DuTsgenIaTw5dx322y9hwqs03_dnUA6hZE2696Kg",
+          "rp": {
+            "name": "나만의 소개 메모",
+            "id": "aleph-passkey-intro.rlatmdgus4141.chatgpt.site"
+          },
+          "user": {
+            "id": "NDk0MzA2ZjgtMDgzYS00OGE0LThjOTItOTM4NDhhZTM2Yzlj",
+            "name": "test-beta",
+            "displayName": ""
+          },
+          "pubKeyCredParams": [
+            {
+              "alg": -7,
+              "type": "public-key"
+            },
+            {
+              "alg": -257,
+              "type": "public-key"
+            }
+          ],
+          "timeout": 60000,
+          "attestation": "none",
+          "excludeCredentials": [],
+          "authenticatorSelection": {
+            "residentKey": "required",
+            "userVerification": "required",
+            "requireResidentKey": true
+          },
+          "extensions": {
+            "credProps": true
+          },
+          "hints": []
+        }
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "register-verify",
+        "flowId": "f05d4b80-2e9e-42b6-9119-7967656fe127",
+        "response": {
+          "id": "Cv6lChUkZDWytm3Dhw2QB7NqEtXCeYqRdzBQ466IgZE",
+          "rawId": "Cv6lChUkZDWytm3Dhw2QB7NqEtXCeYqRdzBQ466IgZE",
+          "type": "public-key",
+          "authenticatorAttachment": "platform",
+          "clientExtensionResults": {},
+          "response": {
+            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uY3JlYXRlIiwiY2hhbGxlbmdlIjoiNVA5RHVUc2dlbklhVHc1ZHgzMjJ5OWh3cXMwM19kblVBNmhaRTI2OTZLZyIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
+            "attestationObject": "o2NmbXRkbm9uZWdhdHRTdG10oGhhdXRoRGF0YViklO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NFFAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAr-pQoVJGQ1srZtw4cNkAezahLVwnmKkXcwUOOuiIGRpQECAyYgASFYIM9NL2-SlL7JPm4smLKHr6ycpGwsSwfJZSxpE8XocIv7IlggEwRt_NGXCsLFMau3aRZua8QFORm-5CpuOwuFKSnd7co",
+            "transports": [
+              "internal"
+            ]
+          }
+        }
+      },
+      "status": 200,
+      "response": {
+        "verified": true,
+        "accountCreated": true,
+        "credential": {
+          "id": "Cv6lChUkZDWytm3Dhw2QB7NqEtXCeYqRdzBQ466IgZE",
+          "name": "시험 B-키",
+          "storage": "기타·확인 중",
+          "public_key": "pQECAyYgASFYIM9NL2-SlL7JPm4smLKHr6ycpGwsSwfJZSxpE8XocIv7IlggEwRt_NGXCsLFMau3aRZua8QFORm-5CpuOwuFKSnd7co",
+          "created_at": "2026-10-06T00:16:43.344Z"
+        },
+        "privateKeyReceived": false
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "GET",
+      "request": null,
+      "status": 200,
+      "response": {
+        "authenticated": true,
+        "user": {
+          "id": "494306f8-083a-48a4-8c92-93848ae36c9c",
+          "username": "test-beta"
+        },
+        "passkeys": [
+          {
+            "id": "Cv6lChUkZDWytm3Dhw2QB7NqEtXCeYqRdzBQ466IgZE",
+            "name": "시험 B-키",
+            "storage": "기타·확인 중",
+            "device_type": "singleDevice",
+            "backed_up": 0,
+            "created_at": "2026-10-06T00:16:43.344Z",
+            "public_key": "pQECAyYgASFYIM9NL2-SlL7JPm4smLKHr6ycpGwsSwfJZSxpE8XocIv7IlggEwRt_NGXCsLFMau3aRZua8QFORm-5CpuOwuFKSnd7co"
+          }
+        ],
+        "sessionExpires": "2026-10-06T12:16:43.344Z"
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/private?user_id=494306f8-083a-48a4-8c92-93848ae36c9c",
+      "method": "GET",
+      "request": null,
+      "status": 403,
+      "response": {
+        "error": "다른 계정의 비공개 자료를 볼 수 없습니다."
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/private?user_id=f433e8c5-687f-4506-b879-820da3e80637",
+      "method": "GET",
+      "request": null,
+      "status": 403,
+      "response": {
+        "error": "다른 계정의 비공개 자료를 볼 수 없습니다."
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/private",
+      "method": "POST",
+      "request": {
+        "user_id": "494306f8-083a-48a4-8c92-93848ae36c9c",
+        "owner_id": "494306f8-083a-48a4-8c92-93848ae36c9c"
+      },
+      "status": 200,
+      "response": {
+        "synthetic": true,
+        "owner": "f433e8c5-687f-4506-b879-820da3e80637",
+        "items": [
+          {
+            "id": "165fc222-be23-45f2-b3be-955ceaa24ab8",
+            "title": "개인 회고",
+            "body": "가상 회고 test-alpha: 근거를 먼저 확인하고 결론을 적는다."
+          },
+          {
+            "id": "71056c0e-40c6-4a63-89e8-986e9b1f8fe9",
+            "title": "지원 준비 목록",
+            "body": "가상 조직 A·B의 공개 채용 정보를 비교한다."
+          },
+          {
+            "id": "d6c6200d-0b25-4307-9ae4-095551c70dba",
+            "title": "프로젝트 메모",
+            "body": "가상 프로젝트 test-alpha: 장비 점검 절차를 정리한다."
+          }
+        ]
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "delete-passkey",
+        "id": "Cv6lChUkZDWytm3Dhw2QB7NqEtXCeYqRdzBQ466IgZE"
+      },
+      "status": 403,
+      "response": {
+        "error": "내 패스키만 삭제할 수 있습니다."
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "login-options",
+        "username": "test-alpha"
+      },
+      "status": 200,
+      "response": {
+        "flowId": "adf19c3b-630d-4d9f-a796-49c718f06914",
+        "options": {
+          "rpId": "aleph-passkey-intro.rlatmdgus4141.chatgpt.site",
+          "challenge": "62DoEDKquU0ofk0ixgpgG6v2dbDU93HLKWmzi9Txueo",
+          "allowCredentials": [
+            {
+              "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+              "transports": [
+                "internal"
+              ],
+              "type": "public-key"
+            },
+            {
+              "id": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM",
+              "transports": [
+                "internal"
+              ],
+              "type": "public-key"
+            }
+          ],
+          "timeout": 60000,
+          "userVerification": "required"
+        }
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "login-verify",
+        "flowId": "adf19c3b-630d-4d9f-a796-49c718f06914",
+        "response": {
+          "id": "Cv6lChUkZDWytm3Dhw2QB7NqEtXCeYqRdzBQ466IgZE",
+          "rawId": "Cv6lChUkZDWytm3Dhw2QB7NqEtXCeYqRdzBQ466IgZE",
+          "type": "public-key",
+          "authenticatorAttachment": "platform",
+          "clientExtensionResults": {},
+          "response": {
+            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiNjJEb0VES3F1VTBvZmswaXhncGdHNnYyZGJEVTkzSExLV216aTlUeHVlbyIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
+            "authenticatorData": "lO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NEFAAAAAQ",
+            "signature": "MEUCIE5_dPETQ_nICCC13JdyODw2FX2zBhtTT5TMVxO3zwD-AiEA4wrIFRf3iu_VGQ3itFQCSyX7yj6ugTdYCCi9LVQGJTo",
+            "userHandle": "NDk0MzA2ZjgtMDgzYS00OGE0LThjOTItOTM4NDhhZTM2Yzlj"
+          }
+        }
+      },
+      "status": 401,
+      "response": {
+        "error": "사용할 수 없는 패스키입니다."
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "login-options",
+        "username": "test-alpha"
+      },
+      "status": 200,
+      "response": {
+        "flowId": "18a4dbed-f060-43b9-819a-e837689684ee",
+        "options": {
+          "rpId": "aleph-passkey-intro.rlatmdgus4141.chatgpt.site",
+          "challenge": "DkyoKTimm6xltiJZfI2INQJRI8heSwJKMybxvLHGk-g",
+          "allowCredentials": [
+            {
+              "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+              "transports": [
+                "internal"
+              ],
+              "type": "public-key"
+            },
+            {
+              "id": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM",
+              "transports": [
+                "internal"
+              ],
+              "type": "public-key"
+            }
+          ],
+          "timeout": 60000,
+          "userVerification": "required"
+        }
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "login-verify",
+        "flowId": "18a4dbed-f060-43b9-819a-e837689684ee",
+        "response": {
+          "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+          "rawId": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+          "type": "public-key",
+          "authenticatorAttachment": "platform",
+          "clientExtensionResults": {},
+          "response": {
+            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiRGt5b0tUaW1tNnhsdGlKWmZJMklOUUpSSThoZVN3SktNeWJ4dkxIR2stZyIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
+            "authenticatorData": "lO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NEFAAAAAQ",
+            "signature": "MEYCIQCmV3ENG_OutBgCYHgWARyRYviIE5yJwI9uUWewQYcvmgIhAIFhGsfwFOC2r8KDmJV01JL1wIwmzFstisUyIlxauwAX",
+            "userHandle": "ZjQzM2U4YzUtNjg3Zi00NTA2LWI4NzktODIwZGEzZTgwNjM3"
+          }
+        }
+      },
+      "status": 200,
+      "response": {
+        "verified": true
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "login-verify",
+        "flowId": "18a4dbed-f060-43b9-819a-e837689684ee",
+        "response": {
+          "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+          "rawId": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+          "type": "public-key",
+          "authenticatorAttachment": "platform",
+          "clientExtensionResults": {},
+          "response": {
+            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiRGt5b0tUaW1tNnhsdGlKWmZJMklOUUpSSThoZVN3SktNeWJ4dkxIR2stZyIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
+            "authenticatorData": "lO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NEFAAAAAQ",
+            "signature": "MEYCIQCmV3ENG_OutBgCYHgWARyRYviIE5yJwI9uUWewQYcvmgIhAIFhGsfwFOC2r8KDmJV01JL1wIwmzFstisUyIlxauwAX",
+            "userHandle": "ZjQzM2U4YzUtNjg3Zi00NTA2LWI4NzktODIwZGEzZTgwNjM3"
+          }
+        }
+      },
+      "status": 401,
+      "response": {
+        "error": "등록·로그인 흐름을 다시 시작해 주세요."
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "login-options",
+        "username": "test-alpha"
+      },
+      "status": 200,
+      "response": {
+        "flowId": "2989c3ac-f5de-4308-a9de-50b107c27165",
+        "options": {
+          "rpId": "aleph-passkey-intro.rlatmdgus4141.chatgpt.site",
+          "challenge": "SZU7avR5XWyb9KeMpUgocZbltLub_wO0AVWVOiAX2K4",
+          "allowCredentials": [
+            {
+              "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+              "transports": [
+                "internal"
+              ],
+              "type": "public-key"
+            },
+            {
+              "id": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM",
+              "transports": [
+                "internal"
+              ],
+              "type": "public-key"
+            }
+          ],
+          "timeout": 60000,
+          "userVerification": "required"
+        }
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "login-verify",
+        "flowId": "2989c3ac-f5de-4308-a9de-50b107c27165",
+        "response": {
+          "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+          "rawId": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+          "type": "public-key",
+          "authenticatorAttachment": "platform",
+          "clientExtensionResults": {},
+          "response": {
+            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiU1pVN2F2UjVYV3liOUtlTXBVZ29jWmJsdEx1Yl93TzBBVldWT2lBWDJLNCIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
+            "authenticatorData": "lO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NEFAAAAAg",
+            "signature": "MEUCIF_Gvz-aQGLLxeSHkiQ6jJGORpe4oxH5T9_QX5Wpj1Y-AiEA0my71KGjS4IfKLH4m_4iWsKPH5uPFcCz0P3vHeFGgvY",
+            "userHandle": "ZjQzM2U4YzUtNjg3Zi00NTA2LWI4NzktODIwZGEzZTgwNjM3"
+          }
+        }
+      },
+      "status": 200,
+      "response": {
+        "verified": true
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "login-verify",
+        "flowId": "2989c3ac-f5de-4308-a9de-50b107c27165",
+        "response": {
+          "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+          "rawId": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+          "type": "public-key",
+          "authenticatorAttachment": "platform",
+          "clientExtensionResults": {},
+          "response": {
+            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiU1pVN2F2UjVYV3liOUtlTXBVZ29jWmJsdEx1Yl93TzBBVldWT2lBWDJLNCIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
+            "authenticatorData": "lO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NEFAAAAAg",
+            "signature": "MEUCIF_Gvz-aQGLLxeSHkiQ6jJGORpe4oxH5T9_QX5Wpj1Y-AiEA0my71KGjS4IfKLH4m_4iWsKPH5uPFcCz0P3vHeFGgvY",
+            "userHandle": "ZjQzM2U4YzUtNjg3Zi00NTA2LWI4NzktODIwZGEzZTgwNjM3"
+          }
+        }
+      },
+      "status": 409,
+      "response": {
+        "error": "이미 사용했거나 취소된 질문입니다. 새로 시작해 주세요."
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "login-options",
+        "username": "test-alpha"
+      },
+      "status": 200,
+      "response": {
+        "flowId": "7b6b6218-a2b5-449c-bf72-1e1cc6ad17ba",
+        "options": {
+          "rpId": "aleph-passkey-intro.rlatmdgus4141.chatgpt.site",
+          "challenge": "JO-k31W8xzsiar7Wfz_aH_zdnjPBibmUPJ7nU_b-p-8",
+          "allowCredentials": [
+            {
+              "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+              "transports": [
+                "internal"
+              ],
+              "type": "public-key"
+            },
+            {
+              "id": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM",
+              "transports": [
+                "internal"
+              ],
+              "type": "public-key"
+            }
+          ],
+          "timeout": 60000,
+          "userVerification": "required"
+        }
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "login-verify",
+        "flowId": "7b6b6218-a2b5-449c-bf72-1e1cc6ad17ba",
+        "response": {
+          "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+          "rawId": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+          "type": "public-key",
+          "authenticatorAttachment": "platform",
+          "clientExtensionResults": {},
+          "response": {
+            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiSk8tazMxVzh4enNpYXI3V2Z6X2FIX3pkbmpQQmlibVVQSjduVV9iLXAtOCIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
+            "authenticatorData": "lO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NEFAAAAAw",
+            "signature": "MEUCIQCOLs-fwQbgozxt2krSLYKEhiz0vreKR4htxpawZly3AwIgShmYj1n8NPBkeJzb6otTOz_XE_XPgA0sSxxcjO31fw0",
+            "userHandle": "ZjQzM2U4YzUtNjg3Zi00NTA2LWI4NzktODIwZGEzZTgwNjM3"
+          }
+        }
+      },
+      "status": 401,
+      "response": {
+        "error": "서명 확인에 실패했습니다."
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "login-options",
+        "username": "test-alpha"
+      },
+      "status": 200,
+      "response": {
+        "flowId": "c6cef611-b610-4525-9675-b898a0c6275b",
+        "options": {
+          "rpId": "aleph-passkey-intro.rlatmdgus4141.chatgpt.site",
+          "challenge": "xL7ohCmKdFz3k_nv19CGujlHMsHFs-zeegNs0piTylw",
+          "allowCredentials": [
+            {
+              "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+              "transports": [
+                "internal"
+              ],
+              "type": "public-key"
+            },
+            {
+              "id": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM",
+              "transports": [
+                "internal"
+              ],
+              "type": "public-key"
+            }
+          ],
+          "timeout": 60000,
+          "userVerification": "required"
+        }
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "login-verify",
+        "flowId": "c6cef611-b610-4525-9675-b898a0c6275b",
+        "response": {
+          "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+          "rawId": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+          "type": "public-key",
+          "authenticatorAttachment": "platform",
+          "clientExtensionResults": {},
+          "response": {
+            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiMDJvSE96S2wwTHRJNlBydFhpYkh6TkpyMTU1S20tNzRhaXVlV0FybThFUSIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
+            "authenticatorData": "lO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NEFAAAABA",
+            "signature": "MEQCIAeQ7zTWopsgs7FH2llnfPd1PycbFHUm-e0C36JKzdJTAiBbrPKRkV0kMZkOAbYC0q7jklbmkp_xyhsH1p9nD0zT5g",
+            "userHandle": "ZjQzM2U4YzUtNjg3Zi00NTA2LWI4NzktODIwZGEzZTgwNjM3"
+          }
+        }
+      },
+      "status": 401,
+      "response": {
+        "error": "서명 확인에 실패했습니다. 새로 로그인해 주세요."
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "login-options",
+        "username": "test-alpha"
+      },
+      "status": 200,
+      "response": {
+        "flowId": "cc7efd88-15ce-431c-88eb-8c2b75c4b87e",
+        "options": {
+          "rpId": "aleph-passkey-intro.rlatmdgus4141.chatgpt.site",
+          "challenge": "-KFBNHXjuCsarSZj19lJzzcpGHgNApXXL0nGxCbvnYU",
+          "allowCredentials": [
+            {
+              "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+              "transports": [
+                "internal"
+              ],
+              "type": "public-key"
+            },
+            {
+              "id": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM",
+              "transports": [
+                "internal"
+              ],
+              "type": "public-key"
+            }
+          ],
+          "timeout": 60000,
+          "userVerification": "required"
+        }
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "login-verify",
+        "flowId": "cc7efd88-15ce-431c-88eb-8c2b75c4b87e",
+        "response": {
+          "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+          "rawId": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+          "type": "public-key",
+          "authenticatorAttachment": "platform",
+          "clientExtensionResults": {},
+          "response": {
+            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiLUtGQk5IWGp1Q3NhclNaajE5bEp6emNwR0hnTkFwWFhMMG5HeENidm5ZVSIsIm9yaWdpbiI6Imh0dHBzOi8vZXZpbC5leGFtcGxlIiwiY3Jvc3NPcmlnaW4iOmZhbHNlfQ",
+            "authenticatorData": "lO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NEFAAAABQ",
+            "signature": "MEQCIHCdqhHFevc5u1ijmhO9viwVtjsiDC7emVIROslvnr0ZAiADBmUX7PReCmz_KDmh83oz_dFwnHtCPiZjr8UipdkMgA",
+            "userHandle": "ZjQzM2U4YzUtNjg3Zi00NTA2LWI4NzktODIwZGEzZTgwNjM3"
+          }
+        }
+      },
+      "status": 401,
+      "response": {
+        "error": "서명 확인에 실패했습니다. 새로 로그인해 주세요."
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "login-options",
+        "username": "test-alpha"
+      },
+      "status": 200,
+      "response": {
+        "flowId": "9f1eee26-bdfb-46f7-8134-53afa5c85792",
+        "options": {
+          "rpId": "aleph-passkey-intro.rlatmdgus4141.chatgpt.site",
+          "challenge": "VXghJ_fKXwi7VajvOeuNlHgBrFWIHfQ_C3acvMXawrU",
+          "allowCredentials": [
+            {
+              "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+              "transports": [
+                "internal"
+              ],
+              "type": "public-key"
+            },
+            {
+              "id": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM",
+              "transports": [
+                "internal"
+              ],
+              "type": "public-key"
+            }
+          ],
+          "timeout": 60000,
+          "userVerification": "required"
+        }
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "login-verify",
+        "flowId": "9f1eee26-bdfb-46f7-8134-53afa5c85792",
+        "response": {
+          "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+          "rawId": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+          "type": "public-key",
+          "authenticatorAttachment": "platform",
+          "clientExtensionResults": {},
+          "response": {
+            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiVlhnaEpfZktYd2k3VmFqdk9ldU5sSGdCckZXSUhmUV9DM2Fjdk1YYXdyVSIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
+            "authenticatorData": "lO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NEBAAAABg",
+            "signature": "MEUCIAaLqdrY7BusTnyafPOhALGTKWnt9MDFvuoqxHzla3uIAiEA-6Lknx-X2OLDt0_oBVsWHissUpge4c9rvUkpXN-sk4k",
+            "userHandle": "ZjQzM2U4YzUtNjg3Zi00NTA2LWI4NzktODIwZGEzZTgwNjM3"
+          }
+        }
+      },
+      "status": 401,
+      "response": {
+        "error": "서명 확인에 실패했습니다. 새로 로그인해 주세요."
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "login-options",
+        "username": "test-alpha"
+      },
+      "status": 403,
+      "response": {
+        "error": "이 페이지에서 시작한 요청만 허용합니다."
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "login-options",
+        "username": "test-alpha"
+      },
+      "status": 200,
+      "response": {
+        "flowId": "844fba30-ef6d-4820-aa70-6c9126d2184c",
+        "options": {
+          "rpId": "aleph-passkey-intro.rlatmdgus4141.chatgpt.site",
+          "challenge": "agaLgBLLa6JVyAvg2W1n1yqR3NbNm2GA9feouxnH8yk",
+          "allowCredentials": [
+            {
+              "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+              "transports": [
+                "internal"
+              ],
+              "type": "public-key"
+            },
+            {
+              "id": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM",
+              "transports": [
+                "internal"
+              ],
+              "type": "public-key"
+            }
+          ],
+          "timeout": 60000,
+          "userVerification": "required"
+        }
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "login-verify",
+        "flowId": "844fba30-ef6d-4820-aa70-6c9126d2184c",
+        "response": {
+          "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+          "rawId": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+          "type": "public-key",
+          "authenticatorAttachment": "platform",
+          "clientExtensionResults": {},
+          "response": {
+            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiYWdhTGdCTExhNkpWeUF2ZzJXMW4xeXFSM05iTm0yR0E5ZmVvdXhuSDh5ayIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
+            "authenticatorData": "lO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NEFAAAABw",
+            "signature": "MEQCIDjc2LNouRrPFEYUAYbVzEh_L3QgUZPd1n4Kaoq0QTw8AiBhIPpoIFFxsxTbfmQ5pSKtAA6JGxf700TQOhQM3kciUg",
+            "userHandle": "ZjQzM2U4YzUtNjg3Zi00NTA2LWI4NzktODIwZGEzZTgwNjM3"
+          }
+        }
+      },
+      "status": 410,
+      "response": {
+        "error": "질문이 만료되었습니다. 새로 시작해 주세요."
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "login-options",
+        "username": "test-alpha"
+      },
+      "status": 200,
+      "response": {
+        "flowId": "70bdbe2d-131e-4444-ac6b-9f99b4d725f0",
+        "options": {
+          "rpId": "aleph-passkey-intro.rlatmdgus4141.chatgpt.site",
+          "challenge": "0ldh4Yi3Mbqg_McBBUwgTm2z64QC6pb48lamSbbzP14",
+          "allowCredentials": [
+            {
+              "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+              "transports": [
+                "internal"
+              ],
+              "type": "public-key"
+            },
+            {
+              "id": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM",
+              "transports": [
+                "internal"
+              ],
+              "type": "public-key"
+            }
+          ],
+          "timeout": 60000,
+          "userVerification": "required"
+        }
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "login-verify",
+        "flowId": "70bdbe2d-131e-4444-ac6b-9f99b4d725f0",
+        "response": {
+          "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+          "rawId": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+          "type": "public-key",
+          "authenticatorAttachment": "platform",
+          "clientExtensionResults": {},
+          "response": {
+            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiMGxkaDRZaTNNYnFnX01jQkJVd2dUbTJ6NjRRQzZwYjQ4bGFtU2JielAxNCIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
+            "authenticatorData": "lO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NEFAAAACA",
+            "signature": "MEYCIQChuV22LSxIC62WUiZC1NsNOjO9QX7OwZ4AxgaBEISd1AIhAL6KDOMp1TqnLyAqMmqdhl_Ks2_VF5OjyXEIMfswKL6t",
+            "userHandle": "ZjQzM2U4YzUtNjg3Zi00NTA2LWI4NzktODIwZGEzZTgwNjM3"
+          }
+        }
+      },
+      "status": 200,
+      "response": {
+        "verified": true
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/private",
+      "method": "GET",
+      "request": null,
+      "status": 200,
+      "response": {
+        "synthetic": true,
+        "owner": "f433e8c5-687f-4506-b879-820da3e80637",
+        "items": [
+          {
+            "id": "165fc222-be23-45f2-b3be-955ceaa24ab8",
+            "title": "개인 회고",
+            "body": "가상 회고 test-alpha: 근거를 먼저 확인하고 결론을 적는다."
+          },
+          {
+            "id": "71056c0e-40c6-4a63-89e8-986e9b1f8fe9",
+            "title": "지원 준비 목록",
+            "body": "가상 조직 A·B의 공개 채용 정보를 비교한다."
+          },
+          {
+            "id": "d6c6200d-0b25-4307-9ae4-095551c70dba",
+            "title": "프로젝트 메모",
+            "body": "가상 프로젝트 test-alpha: 장비 점검 절차를 정리한다."
+          }
+        ]
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "logout"
+      },
+      "status": 200,
+      "response": {
+        "loggedOut": true
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/private",
+      "method": "GET",
+      "request": null,
+      "status": 401,
+      "response": {
+        "error": "세션이 만료되었거나 로그아웃되었습니다."
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "login-options",
+        "username": "test-alpha"
+      },
+      "status": 200,
+      "response": {
+        "flowId": "da512310-fb05-4bd8-ad16-7526a2f13141",
+        "options": {
+          "rpId": "aleph-passkey-intro.rlatmdgus4141.chatgpt.site",
+          "challenge": "X7kmVVRJWlmLwQS4p5U96jFTDkCCSHVulq_yu1em-yQ",
+          "allowCredentials": [
+            {
+              "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+              "transports": [
+                "internal"
+              ],
+              "type": "public-key"
+            },
+            {
+              "id": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM",
+              "transports": [
+                "internal"
+              ],
+              "type": "public-key"
+            }
+          ],
+          "timeout": 60000,
+          "userVerification": "required"
+        }
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "login-verify",
+        "flowId": "da512310-fb05-4bd8-ad16-7526a2f13141",
+        "response": {
+          "id": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM",
+          "rawId": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM",
+          "type": "public-key",
+          "authenticatorAttachment": "platform",
+          "clientExtensionResults": {},
+          "response": {
+            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiWDdrbVZWUkpXbG1Md1FTNHA1VTk2akZURGtDQ1NIVnVscV95dTFlbS15USIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
+            "authenticatorData": "lO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NEFAAAAAQ",
+            "signature": "MEYCIQDMG6OSoVWJR4IVjq_J889057rqFkLhM-RL_DlRp6fQtwIhANvOeHxvdN_zgDqoQcUncNc0lhBAN2Xzg_kD6F_2EWbY",
+            "userHandle": "ZjQzM2U4YzUtNjg3Zi00NTA2LWI4NzktODIwZGEzZTgwNjM3"
+          }
+        }
+      },
+      "status": 200,
+      "response": {
+        "verified": true
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "delete-passkey",
+        "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM"
+      },
+      "status": 200,
+      "response": {
+        "deleted": true,
+        "remaining": 1,
+        "loggedOut": false,
+        "warning": null
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "login-options",
+        "username": "test-alpha"
+      },
+      "status": 200,
+      "response": {
+        "flowId": "db7b7f35-2662-4229-abbf-7ddbc3f5bfdb",
+        "options": {
+          "rpId": "aleph-passkey-intro.rlatmdgus4141.chatgpt.site",
+          "challenge": "zgNvIYgbXZDmKQpOPJ7CVv7qO5fLbvrI7G1ZOg7H6lE",
+          "allowCredentials": [
+            {
+              "id": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM",
+              "transports": [
+                "internal"
+              ],
+              "type": "public-key"
+            }
+          ],
+          "timeout": 60000,
+          "userVerification": "required"
+        }
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "login-verify",
+        "flowId": "db7b7f35-2662-4229-abbf-7ddbc3f5bfdb",
+        "response": {
+          "id": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+          "rawId": "AKsm38EUXrtlxOSF4vrmQbNvBAwUWbiLPVUyKH2VRYM",
+          "type": "public-key",
+          "authenticatorAttachment": "platform",
+          "clientExtensionResults": {},
+          "response": {
+            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoiemdOdklZZ2JYWkRtS1FwT1BKN0NWdjdxTzVmTGJ2ckk3RzFaT2c3SDZsRSIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
+            "authenticatorData": "lO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NEFAAAACQ",
+            "signature": "MEQCIHN2gc-gUZV1TbW_gkmAVJR8p7WpgPRLuvtfhZyhUW_XAiA4WkNYJiffooSrjFN4A2ubkFG2iRVuvC6-C9cBUY8Qiw",
+            "userHandle": "ZjQzM2U4YzUtNjg3Zi00NTA2LWI4NzktODIwZGEzZTgwNjM3"
+          }
+        }
+      },
+      "status": 401,
+      "response": {
+        "error": "사용할 수 없는 패스키입니다."
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "login-options",
+        "username": "test-alpha"
+      },
+      "status": 200,
+      "response": {
+        "flowId": "7a3be4a5-727d-44fa-900e-1e7c4eb901ff",
+        "options": {
+          "rpId": "aleph-passkey-intro.rlatmdgus4141.chatgpt.site",
+          "challenge": "wFghG-jDKlJmShKOVEQwSrK4iD6LnmObcxdFN1Cccww",
+          "allowCredentials": [
+            {
+              "id": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM",
+              "transports": [
+                "internal"
+              ],
+              "type": "public-key"
+            }
+          ],
+          "timeout": 60000,
+          "userVerification": "required"
+        }
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "login-verify",
+        "flowId": "7a3be4a5-727d-44fa-900e-1e7c4eb901ff",
+        "response": {
+          "id": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM",
+          "rawId": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM",
+          "type": "public-key",
+          "authenticatorAttachment": "platform",
+          "clientExtensionResults": {},
+          "response": {
+            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uZ2V0IiwiY2hhbGxlbmdlIjoid0ZnaEctakRLbEptU2hLT1ZFUXdTcks0aUQ2TG5tT2JjeGRGTjFDY2N3dyIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
+            "authenticatorData": "lO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NEFAAAAAg",
+            "signature": "MEQCIFk2Tb4f9NYoDeVVQs5tJGGc2SaSzGPgLYosYTCnu6h2AiBmYGu2ivPaDfZYv_7i_aT65uuPzyJt4Ak6UZ7q8bgD5g",
+            "userHandle": "ZjQzM2U4YzUtNjg3Zi00NTA2LWI4NzktODIwZGEzZTgwNjM3"
+          }
+        }
+      },
+      "status": 200,
+      "response": {
+        "verified": true
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "delete-passkey",
+        "id": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM"
+      },
+      "status": 409,
+      "response": {
+        "error": "마지막 패스키를 지우면 계정에 다시 들어갈 수 없습니다. 명시적으로 확인해 주세요."
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "delete-passkey",
+        "id": "hTgcJAVw2VwvLym7-EQQZiPAEvprEkVhAEQq_SGO8CM",
+        "confirmLast": true
+      },
+      "status": 200,
+      "response": {
+        "deleted": true,
+        "remaining": 0,
+        "loggedOut": true,
+        "warning": "남은 패스키가 없어 재로그인할 수 없습니다."
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/private",
+      "method": "GET",
+      "request": null,
+      "status": 401,
+      "response": {
+        "error": "패스키 로그인이 필요합니다."
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "login-options",
+        "username": "test-alpha"
+      },
+      "status": 401,
+      "response": {
+        "error": "등록된 패스키가 없습니다. 비밀번호나 복구 우회는 제공하지 않습니다."
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "register-options",
+        "username": "test-alpha",
+        "name": "우회 키",
+        "storage": "기타·확인 중"
+      },
+      "status": 409,
+      "response": {
+        "error": "이미 있는 계정입니다. 패스키로 로그인하세요."
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "register-options",
+        "username": "test-bad-origin",
+        "name": "오류",
+        "storage": "기타·확인 중"
+      },
+      "status": 200,
+      "response": {
+        "flowId": "124b4824-bbf0-4f22-a3f5-f173acfbfad4",
+        "options": {
+          "challenge": "8DA_1TQiKeZBIkncVj05tqg4YVvu2t4rukq48k9FxYU",
+          "rp": {
+            "name": "나만의 소개 메모",
+            "id": "aleph-passkey-intro.rlatmdgus4141.chatgpt.site"
+          },
+          "user": {
+            "id": "YzI1MjkxZTktMTA0YS00MTc3LWJlYjUtYzU2OTI4Y2Y1OWIw",
+            "name": "test-bad-origin",
+            "displayName": ""
+          },
+          "pubKeyCredParams": [
+            {
+              "alg": -7,
+              "type": "public-key"
+            },
+            {
+              "alg": -257,
+              "type": "public-key"
+            }
+          ],
+          "timeout": 60000,
+          "attestation": "none",
+          "excludeCredentials": [],
+          "authenticatorSelection": {
+            "residentKey": "required",
+            "userVerification": "required",
+            "requireResidentKey": true
+          },
+          "extensions": {
+            "credProps": true
+          },
+          "hints": []
+        }
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    },
+    {
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "register-verify",
+        "flowId": "124b4824-bbf0-4f22-a3f5-f173acfbfad4",
+        "response": {
+          "id": "ud-_AawrZ8W10z7i02uJH6aOgQZQ7XyE3r3fzqP9MIM",
+          "rawId": "ud-_AawrZ8W10z7i02uJH6aOgQZQ7XyE3r3fzqP9MIM",
+          "type": "public-key",
+          "authenticatorAttachment": "platform",
+          "clientExtensionResults": {},
+          "response": {
+            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uY3JlYXRlIiwiY2hhbGxlbmdlIjoiOERBXzFUUWlLZVpCSWtuY1ZqMDV0cWc0WVZ2dTJ0NHJ1a3E0OGs5RnhZVSIsIm9yaWdpbiI6Imh0dHBzOi8vZXZpbC5leGFtcGxlIiwiY3Jvc3NPcmlnaW4iOmZhbHNlfQ",
+            "attestationObject": "o2NmbXRkbm9uZWdhdHRTdG10oGhhdXRoRGF0YViklO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NFFAAAAAAAAAAAAAAAAAAAAAAAAAAAAILnfvwGsK2fFtdM-4tNriR-mjoEGUO18hN69386j_TCDpQECAyYgASFYIHvylxvrpgSc6Z0FFnEAs_Ld_7y-HxQOmJPJgjfZvEecIlggUuVEv4T1PLe9OtP-K4X2S5julgiAG_WB1n7OIyKSR4I",
+            "transports": [
+              "internal"
+            ]
+          }
+        }
+      },
+      "status": 401,
+      "response": {
+        "error": "패스키 등록 확인에 실패했습니다. 새로 시작해 주세요."
+      },
+      "cookie": "[값 생략]",
+      "setCookie": "[값 생략]"
+    }
+  ],
+  "privateKey": "시험 메모리에서만 사용; 파일·요청·응답에 없음",
+  "session": "모든 Cookie·Set-Cookie 값 생략",
+  "summary": {
+    "passed": 41,
+    "failed": 0,
+    "accountDataCountsBeforeAndAfter": {
+      "A": 3,
+      "B": 3
+    }
+  }
+}

@@ -1,0 +1,56 @@
+import assert from 'node:assert/strict';
+import {DatabaseSync} from 'node:sqlite';
+import {generateKeyPairSync,createHash,randomBytes,sign} from 'node:crypto';
+import {readFileSync,writeFileSync} from 'node:fs';
+import {isoCBOR} from '@simplewebauthn/server/helpers';
+import {handle,ORIGIN,COOKIE,FLOW} from '../lib/passkeys.ts';
+import {publicPage} from '../lib/public-page.ts';
+const sqlite=new DatabaseSync(':memory:');sqlite.exec('PRAGMA foreign_keys=ON');sqlite.exec(readFileSync('drizzle/0000_abnormal_thunderbird.sql','utf8'));
+class Statement{constructor(sql,params=[]){this.sql=sql;this.params=params;}bind(...p){return new Statement(this.sql,p)}first(){return sqlite.prepare(this.sql).get(...this.params)||null;}all(){return {results:sqlite.prepare(this.sql).all(...this.params)}}run(){const r=sqlite.prepare(this.sql).run(...this.params);return {meta:{changes:Number(r.changes)}}}}
+const db={prepare:s=>new Statement(s),batch:async jobs=>{sqlite.exec('BEGIN');try{const r=jobs.map(x=>x.run());sqlite.exec('COMMIT');return r;}catch(e){sqlite.exec('ROLLBACK');throw e;}}};
+const b64=a=>Buffer.from(a).toString('base64url'),decode=s=>Buffer.from(s,'base64url'),hash=a=>createHash('sha256').update(a).digest();
+const result={task:'T08',scope:'로컬 SQLite + 실제 WebAuthn 암호 검증. 소프트웨어 인증기 fixture이며 실제 기기·배포 브라우저 검증이 아님.',at:new Date().toISOString(),checks:[],events:[],privateKey:'시험 메모리에서만 사용; 파일·요청·응답에 없음',session:'모든 Cookie·Set-Cookie 값 생략'};
+function check(name,condition){assert.ok(condition,name);result.checks.push({name,passed:true});}
+class Client{jar={};async request(path='/api/passkeys',body=null,options={}){const cookie=Object.entries(this.jar).map(([k,v])=>k+'='+v).join('; '),headers={Origin:ORIGIN,'Content-Type':'application/json',...(cookie?{Cookie:cookie}:{}),...options.headers};const response=await handle(new Request(ORIGIN+path,{method:body?'POST':'GET',headers,...(body?{body:JSON.stringify(body)}:{})}),db);const json=await response.json();for(const set of response.headers.getSetCookie()){const [pair]=set.split(';');const i=pair.indexOf('=');const key=pair.slice(0,i),val=pair.slice(i+1);if(val)this.jar[key]=val;else delete this.jar[key];}result.events.push({path,method:body?'POST':'GET',request:body,status:response.status,response:json,cookie:'[값 생략]',setCookie:'[값 생략]'});return {status:response.status,json};}async post(action,fields={}){return this.request('/api/passkeys',{action,...fields})}}
+function fixture(){const {privateKey,publicKey}=generateKeyPairSync('ec',{namedCurve:'prime256v1'});const j=publicKey.export({format:'jwk'}),id=randomBytes(32),cose=isoCBOR.encode(new Map([[1,2],[3,-7],[-1,1],[-2,new Uint8Array(decode(j.x))],[-3,new Uint8Array(decode(j.y))]]));return {privateKey,id,b64id:b64(id),cose,counter:0,userID:null};}
+function registration(f,options,{origin=ORIGIN,uv=true}={}){f.userID=options.user.id;const clientData=Buffer.from(JSON.stringify({type:'webauthn.create',challenge:options.challenge,origin,crossOrigin:false}));const len=Buffer.alloc(2);len.writeUInt16BE(f.id.length);const authData=Buffer.concat([hash(options.rp.id),Buffer.from([uv?0x45:0x41]),Buffer.alloc(4),Buffer.alloc(16),len,f.id,Buffer.from(f.cose)]);const att=isoCBOR.encode(new Map([['fmt','none'],['attStmt',new Map()],['authData',new Uint8Array(authData)]]));return {id:f.b64id,rawId:f.b64id,type:'public-key',authenticatorAttachment:'platform',clientExtensionResults:{},response:{clientDataJSON:b64(clientData),attestationObject:b64(att),transports:['internal']}};}
+function assertion(f,options,{origin=ORIGIN,uv=true,wrongChallenge=false,invalidSignature=false}={}){const clientData=Buffer.from(JSON.stringify({type:'webauthn.get',challenge:wrongChallenge?b64(randomBytes(32)):options.challenge,origin,crossOrigin:false})),counter=Buffer.alloc(4);counter.writeUInt32BE(++f.counter);const auth=Buffer.concat([hash(options.rpId),Buffer.from([uv?5:1]),counter]);const signature=sign('sha256',Buffer.concat([auth,hash(clientData)]),f.privateKey);if(invalidSignature)signature[signature.length-1]^=1;return {id:f.b64id,rawId:f.b64id,type:'public-key',authenticatorAttachment:'platform',clientExtensionResults:{},response:{clientDataJSON:b64(clientData),authenticatorData:b64(auth),signature:b64(signature),userHandle:f.userID}};}
+async function reg(client,user,key,name='시험 키'){const o=await client.post('register-options',{username:user,name,storage:'기타·확인 중'});assert.equal(o.status,200);const r=await client.post('register-verify',{flowId:o.json.flowId,response:registration(key,o.json.options)});assert.equal(r.status,200);return {o,r};}
+async function login(client,user,key,config={}){const o=await client.post('login-options',{username:user});assert.equal(o.status,200);const payload={flowId:o.json.flowId,response:assertion(key,o.json.options,config)};const r=await client.post('login-verify',payload);return {o,r,payload};}
+const a=new Client,b=new Client,anonymous=new Client,ka=fixture(),ka2=fixture(),kb=fixture();
+check('익명 비공개 API 401',(await anonymous.request('/api/private')).status===401);
+check('공개 원본 전체 내용 유지',publicPage.includes('장애를 분석하고 해결하는 예비 네트워크 엔지니어')&&publicPage.includes('전공 학점 4.06'));
+check('익명 HTML·JS에 비공개 메모 본문 없음',!publicPage.includes('장비 점검 절차를 정리한다.')&&!readFileSync('public/passkeys.js','utf8').includes('공개 채용 정보를 비교한다.'));
+check('비밀번호 입력 칸 없음',!publicPage.includes('type="password"'));
+const cancelled=new Client;const c1=await cancelled.post('register-options',{username:'cancel-demo',name:'취소 키',storage:'기타·확인 중'});const c2=await cancelled.post('register-options',{username:'cancel-demo',name:'취소 키',storage:'기타·확인 중'});
+check('등록 challenge 매번 다름',c1.json.options.challenge!==c2.json.options.challenge);
+check('등록 확인 전 challenge 서버 보존',sqlite.prepare('SELECT challenge FROM passkey_challenges WHERE id=?').get(c2.json.flowId).challenge===c2.json.options.challenge);
+await cancelled.post('cancel',{flowId:c2.json.flowId});check('취소 후 계정·패스키 저장 없음',!sqlite.prepare('SELECT id FROM passkey_users WHERE username=?').get('cancel-demo')&&sqlite.prepare('SELECT COUNT(*) n FROM passkey_credentials').get().n===0);
+const ar=await reg(a,'test-alpha',ka,'시험 A-노트북');check('등록 성공 공개키 저장',sqlite.prepare('SELECT public_key FROM passkey_credentials WHERE id=?').get(ka.b64id).public_key===b64(ka.cose));
+check('등록 요청에 개인키 없음',!JSON.stringify(ar.r).includes('PRIVATE KEY')&&ar.r.json.privateKeyReceived===false);
+const uidA=(await a.request()).json.user.id;check('가상 메모 세 개',(await a.request('/api/private')).json.items.length===3);
+await reg(a,'test-alpha',ka2,'시험 A-보조 키');const listed=(await a.request()).json.passkeys;check('두 패스키 이름·등록일 보존',listed.length===2&&listed.every(x=>x.name&&x.created_at));
+await reg(b,'test-beta',kb,'시험 B-키');const uidB=(await b.request()).json.user.id;
+const beforeA=sqlite.prepare('SELECT COUNT(*) n FROM private_notes WHERE user_id=?').get(uidA).n,beforeB=sqlite.prepare('SELECT COUNT(*) n FROM private_notes WHERE user_id=?').get(uidB).n;
+check('A에서 B 조회 403',(await a.request('/api/private?user_id='+uidB)).status===403);
+check('B에서 A 조회 403',(await b.request('/api/private?user_id='+uidA)).status===403);
+check('거절 전후 양쪽 자료 건수 동일',sqlite.prepare('SELECT COUNT(*) n FROM private_notes WHERE user_id=?').get(uidA).n===beforeA&&sqlite.prepare('SELECT COUNT(*) n FROM private_notes WHERE user_id=?').get(uidB).n===beforeB);
+check('본문 소유자 위조해도 내 자료만 반환',(await a.request('/api/private',{user_id:uidB,owner_id:uidB})).json.owner===uidA);
+check('다른 계정 키 삭제 403',(await a.post('delete-passkey',{id:kb.b64id})).status===403);
+const foreign=new Client;check('다른 계정 패스키 로그인 401',(await login(foreign,'test-alpha',kb)).r.status===401);
+const log1=await login(a,'test-alpha',ka);check('올바른 서명 로그인 200',log1.r.status===200);
+check('사용한 challenge 재사용 409',(await a.post('login-verify',log1.payload)).status===401||result.events.at(-1).status===409);
+// Reproduce with the original flow cookie too: replay must be rejected even if it is retained.
+const replay=new Client;const options=await replay.post('login-options',{username:'test-alpha'});const savedFlow=replay.jar[FLOW],payload={flowId:options.json.flowId,response:assertion(ka,options.json.options)};check('일회용 질문 첫 요청 성공',(await replay.post('login-verify',payload)).status===200);replay.jar[FLOW]=savedFlow;check('원래 flow cookie를 유지해도 재사용 409',(await replay.post('login-verify',payload)).status===409);
+const log2=await login(a,'test-alpha',ka,{invalidSignature:true});check('틀린 서명 401',log2.r.status===401);check('로그인 challenge 매번 다름',log1.o.json.options.challenge!==log2.o.json.options.challenge);
+check('틀린 challenge 401',(await login(a,'test-alpha',ka,{wrongChallenge:true})).r.status===401);
+check('틀린 origin 401',(await login(a,'test-alpha',ka,{origin:'https://evil.example'})).r.status===401);
+check('본인 확인 UV 없는 서명 401',(await login(a,'test-alpha',ka,{uv:false})).r.status===401);
+check('POST 다른 Origin 403',(await anonymous.request('/api/passkeys',{action:'login-options',username:'test-alpha'},{headers:{Origin:'https://evil.example'}})).status===403);
+const expiry=new Client;const eo=await expiry.post('login-options',{username:'test-alpha'});sqlite.prepare('UPDATE passkey_challenges SET expires_at=? WHERE id=?').run('2000-01-01T00:00:00.000Z',eo.json.flowId);check('만료 challenge 410',(await expiry.post('login-verify',{flowId:eo.json.flowId,response:assertion(ka,eo.json.options)})).status===410);
+await login(a,'test-alpha',ka);const oldSession=a.jar[COOKIE];check('로그아웃 전 같은 세션 조회 200',(await a.request('/api/private')).status===200);await a.post('logout');a.jar[COOKIE]=oldSession;check('로그아웃한 세션 원문 재사용 401',(await a.request('/api/private')).status===401);a.jar={};
+await login(a,'test-alpha',ka2);check('키 하나 삭제 200',(await a.post('delete-passkey',{id:ka.b64id})).status===200);check('삭제한 키 로그인 401',(await login(new Client,'test-alpha',ka)).r.status===401);check('남은 키 로그인 200',(await login(a,'test-alpha',ka2)).r.status===200);
+check('마지막 키는 명시 확인 없이 삭제 409',(await a.post('delete-passkey',{id:ka2.b64id})).status===409);check('마지막 키 명시 확인 삭제 200',(await a.post('delete-passkey',{id:ka2.b64id,confirmLast:true})).status===200);check('마지막 키 삭제 후 세션 401',(await a.request('/api/private')).status===401);check('키 0개 계정 재로그인 401',(await a.post('login-options',{username:'test-alpha'})).status===401);check('키 0개 계정 익명 재등록 우회 409',(await a.post('register-options',{username:'test-alpha',name:'우회 키',storage:'기타·확인 중'})).status===409);
+const badReg=new Client,badkey=fixture(),bo=await badReg.post('register-options',{username:'test-bad-origin',name:'오류',storage:'기타·확인 중'});check('틀린 origin 등록 401',(await badReg.post('register-verify',{flowId:bo.json.flowId,response:registration(badkey,bo.json.options,{origin:'https://evil.example'})})).status===401);check('실패한 등록 계정 저장 없음',!sqlite.prepare('SELECT id FROM passkey_users WHERE username=?').get('test-bad-origin'));
+check('세션 DB에는 원문 없음',!JSON.stringify(sqlite.prepare('SELECT * FROM passkey_sessions').all()).includes(b.jar[COOKIE]));
+const counts={A:beforeA,B:beforeB};result.summary={passed:result.checks.length,failed:0,accountDataCountsBeforeAndAfter:counts};writeFileSync('t08/service-results.json',JSON.stringify(result,null,2));console.log(JSON.stringify(result.summary));sqlite.close();
