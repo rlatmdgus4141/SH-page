@@ -35,7 +35,8 @@
    </form>
   </div>
   <div class="auth-support"><div class="auth-actions"><button id="export-evidence" class="secondary" type="button">이번 창의 확인 기록 내려받기</button><button id="probe-anonymous" class="secondary" type="button">로그인 없이 조회 확인</button></div><p>확인 기록에는 이 창에서 보낸 등록·로그인 요청과 응답, 공개키가 담깁니다. 쿠키·세션 원문과 개인키는 담지 않습니다. 창을 닫기 전에 내려받으세요. 비공개 메모는 서버에 보관됩니다.</p>
-   <details id="verification-tools"><summary>제출용 접근 차단 확인 도구</summary>
+   <details class="notice"><summary>제출 확인 자료 · 로그인 없이 보기</summary><p>비공개 메모 본문을 가린 가상 시험 기록입니다.</p><ul><li><a href="/auth-guide" target="_blank" rel="noopener">인증 구현 설명서 여섯 항목</a></li><li><a href="/t08-evidence/T08_browser_registration.public.json" target="_blank" rel="noopener">실제 등록·두 키 목록</a></li><li><a href="/t08-evidence/T08_browser_security.public.json" target="_blank" rel="noopener">실제 접근 차단·키 삭제·취소 확인</a></li><li><a href="/t08-evidence/T08_local_service_results.public.json" target="_blank" rel="noopener">로컬 검사 42개 결과</a></li><li><a href="/t08-evidence/T08_registration_cancelled.png" target="_blank" rel="noopener">등록 취소 안내 화면</a></li></ul></details>
+<details id="verification-tools"><summary>제출용 접근 차단 확인 도구</summary>
     <p>두 시험 계정으로 번갈아 로그인해 실행하세요. 자료를 수정하거나 키를 삭제하지 않습니다. 결과는 이번 창의 확인 JSON에 함께 담깁니다.</p>
     <p>현재 시험 계정 ID: <code id="my-account-id">로그인이 필요합니다.</code></p>
     <form id="cross-account-form" class="auth-card">

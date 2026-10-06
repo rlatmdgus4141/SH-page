@@ -1,0 +1,380 @@
+{
+  "task": "T08",
+  "origin": "https://aleph-passkey-intro.rlatmdgus4141.chatgpt.site",
+  "exportedAt": "2026-10-06T00:31:02.765Z",
+  "scope": "이 브라우저에서 이번에 진행한 작업. 기기의 저장 위치는 본인 선택값입니다.",
+  "secrets": "쿠키·세션 토큰·개인키는 기록하지 않음",
+  "events": [
+    {
+      "at": "2026-10-06T00:25:24.303Z",
+      "path": "/api/passkeys",
+      "method": "GET",
+      "request": null,
+      "status": 200,
+      "response": {
+        "authenticated": false
+      },
+      "cookies": "기록 대상 아님"
+    },
+    {
+      "at": "2026-10-06T00:25:47.340Z",
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "login-options",
+        "username": "t08-demo-a"
+      },
+      "status": 401,
+      "response": {
+        "error": "이 별칭으로 등록한 패스키가 없습니다."
+      },
+      "cookies": "기록 대상 아님"
+    },
+    {
+      "at": "2026-10-06T00:25:47.386Z",
+      "path": "/api/passkeys",
+      "method": "GET",
+      "request": null,
+      "status": 200,
+      "response": {
+        "authenticated": false
+      },
+      "cookies": "기록 대상 아님"
+    },
+    {
+      "at": "2026-10-06T00:27:38.006Z",
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "register-options",
+        "username": "t08-demo-a",
+        "name": "첫 번째 패스키",
+        "storage": "Windows Hello"
+      },
+      "status": 200,
+      "response": {
+        "flowId": "0a39e7ba-6b75-44c7-8a2a-6dafa3875dd4",
+        "options": {
+          "challenge": "FVIxW50qEdTuTyyO4zxvhVFHQMHM5WaKu8GGTbzwAhE",
+          "rp": {
+            "name": "나만의 소개 메모",
+            "id": "aleph-passkey-intro.rlatmdgus4141.chatgpt.site"
+          },
+          "user": {
+            "id": "Y2U4Nzg1MTctZThjMi00MGMzLWI2MTYtYWQ1MGFkZWMxMmE4",
+            "name": "t08-demo-a",
+            "displayName": ""
+          },
+          "pubKeyCredParams": [
+            {
+              "alg": -7,
+              "type": "public-key"
+            },
+            {
+              "alg": -257,
+              "type": "public-key"
+            }
+          ],
+          "timeout": 60000,
+          "attestation": "none",
+          "excludeCredentials": [],
+          "authenticatorSelection": {
+            "residentKey": "required",
+            "userVerification": "required",
+            "requireResidentKey": true
+          },
+          "extensions": {
+            "credProps": true
+          },
+          "hints": []
+        }
+      },
+      "cookies": "기록 대상 아님"
+    },
+    {
+      "at": "2026-10-06T00:27:55.715Z",
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "register-verify",
+        "flowId": "0a39e7ba-6b75-44c7-8a2a-6dafa3875dd4",
+        "response": {
+          "id": "_Au8KJyjGRXJHP3be-zpX9AHtCmxCnoJ7_mA0IS98a4",
+          "rawId": "_Au8KJyjGRXJHP3be-zpX9AHtCmxCnoJ7_mA0IS98a4",
+          "response": {
+            "attestationObject": "o2NmbXRkbm9uZWdhdHRTdG10oGhhdXRoRGF0YViklO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NFFAAAAAJ3dGBevWkZyork-PdlQAKkAIPwLvCicoxkVyRz923vs6V_QB7QpsQp6Ce_5gNCEvfGupQECAyYgASFYIOw93ScQdKFq-hVUv__YNa_dzSDHmjhs1W4yN_4FH7e0IlggonSmBGfcsPLvRvwNo-QjyBy_5ojd474t0C2ZGWFXGLQ",
+            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uY3JlYXRlIiwiY2hhbGxlbmdlIjoiRlZJeFc1MHFFZFR1VHl5TzR6eHZoVkZIUU1ITTVXYUt1OEdHVGJ6d0FoRSIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
+            "transports": [
+              "internal"
+            ],
+            "publicKeyAlgorithm": -7,
+            "publicKey": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAE7D3dJxB0oWr6FVS__9g1r93NIMeaOGzVbjI3_gUft7SidKYEZ9yw8u9G_A2j5CPIHL_miN3jvi3QLZkZYVcYtA",
+            "authenticatorData": "lO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NFFAAAAAJ3dGBevWkZyork-PdlQAKkAIPwLvCicoxkVyRz923vs6V_QB7QpsQp6Ce_5gNCEvfGupQECAyYgASFYIOw93ScQdKFq-hVUv__YNa_dzSDHmjhs1W4yN_4FH7e0IlggonSmBGfcsPLvRvwNo-QjyBy_5ojd474t0C2ZGWFXGLQ"
+          },
+          "type": "public-key",
+          "clientExtensionResults": {
+            "credProps": {
+              "rk": true
+            }
+          },
+          "authenticatorAttachment": "platform"
+        }
+      },
+      "status": 200,
+      "response": {
+        "verified": true,
+        "accountCreated": true,
+        "credential": {
+          "id": "_Au8KJyjGRXJHP3be-zpX9AHtCmxCnoJ7_mA0IS98a4",
+          "name": "첫 번째 패스키",
+          "storage": "Windows Hello",
+          "public_key": "pQECAyYgASFYIOw93ScQdKFq-hVUv__YNa_dzSDHmjhs1W4yN_4FH7e0IlggonSmBGfcsPLvRvwNo-QjyBy_5ojd474t0C2ZGWFXGLQ",
+          "created_at": "2026-10-06T00:27:55.571Z"
+        },
+        "privateKeyReceived": false
+      },
+      "cookies": "기록 대상 아님"
+    },
+    {
+      "at": "2026-10-06T00:27:55.917Z",
+      "path": "/api/passkeys",
+      "method": "GET",
+      "request": null,
+      "status": 200,
+      "response": {
+        "authenticated": true,
+        "user": {
+          "id": "ce878517-e8c2-40c3-b616-ad50adec12a8",
+          "username": "t08-demo-a"
+        },
+        "passkeys": [
+          {
+            "id": "_Au8KJyjGRXJHP3be-zpX9AHtCmxCnoJ7_mA0IS98a4",
+            "name": "첫 번째 패스키",
+            "storage": "Windows Hello",
+            "device_type": "singleDevice",
+            "backed_up": 0,
+            "created_at": "2026-10-06T00:27:55.571Z",
+            "public_key": "pQECAyYgASFYIOw93ScQdKFq-hVUv__YNa_dzSDHmjhs1W4yN_4FH7e0IlggonSmBGfcsPLvRvwNo-QjyBy_5ojd474t0C2ZGWFXGLQ"
+          }
+        ],
+        "sessionExpires": "2026-10-06T12:27:55.633Z"
+      },
+      "cookies": "기록 대상 아님"
+    },
+    {
+      "at": "2026-10-06T00:27:56.119Z",
+      "path": "/api/private",
+      "method": "GET",
+      "request": null,
+      "status": 200,
+      "response": {
+        "synthetic": true,
+        "owner": "ce878517-e8c2-40c3-b616-ad50adec12a8",
+        "items": [
+          {
+            "id": "1381c34b-1c9c-410c-bb5b-58c2be45baef",
+            "title": "[비공개 내용 가림]",
+            "body": "[비공개 내용 가림]",
+            "title_sha256": "8101d9a5ae6b44a36ad1e8d2afada82570ee29dcc13614a9fcb825014dbb77f1",
+            "body_sha256": "de9a6027fa311f5c364faeacc0ea9783862eb8dd8ee02faa523253634f543e04"
+          },
+          {
+            "id": "720969c5-eb05-4ae2-8449-874806c74123",
+            "title": "[비공개 내용 가림]",
+            "body": "[비공개 내용 가림]",
+            "title_sha256": "fa5c6f167c5c92cd4dec0388b617291f1db0049632a9fe1f0ae749ed4ff90d0b",
+            "body_sha256": "d65bedd1c1df4529325f15b6dab846545006b327227be69d106645ec3f54ff6b"
+          },
+          {
+            "id": "b5c50962-0ce7-403c-83fd-e51bdc7ddb98",
+            "title": "[비공개 내용 가림]",
+            "body": "[비공개 내용 가림]",
+            "title_sha256": "d7da745c09f47d18a7bd88d997db70a75c28f9d2102c791529164a33100d8107",
+            "body_sha256": "5ce5b3a914a50a0064907f1dabd15961b5b26d37d12423c6acd41cd9c27c5cd9"
+          }
+        ]
+      },
+      "cookies": "기록 대상 아님"
+    },
+    {
+      "at": "2026-10-06T00:29:18.651Z",
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "register-options",
+        "name": "Google 백업 패스키",
+        "storage": "Google 비밀번호 관리자"
+      },
+      "status": 200,
+      "response": {
+        "flowId": "6ab2b84b-c830-45ee-937d-7b448e7ddb50",
+        "options": {
+          "challenge": "BmKnjllO-pUJ3Hfh1RJF2ZEStb04-rUp_73_uMIVRv4",
+          "rp": {
+            "name": "나만의 소개 메모",
+            "id": "aleph-passkey-intro.rlatmdgus4141.chatgpt.site"
+          },
+          "user": {
+            "id": "Y2U4Nzg1MTctZThjMi00MGMzLWI2MTYtYWQ1MGFkZWMxMmE4",
+            "name": "t08-demo-a",
+            "displayName": ""
+          },
+          "pubKeyCredParams": [
+            {
+              "alg": -7,
+              "type": "public-key"
+            },
+            {
+              "alg": -257,
+              "type": "public-key"
+            }
+          ],
+          "timeout": 60000,
+          "attestation": "none",
+          "excludeCredentials": [
+            {
+              "id": "_Au8KJyjGRXJHP3be-zpX9AHtCmxCnoJ7_mA0IS98a4",
+              "transports": [
+                "internal"
+              ],
+              "type": "public-key"
+            }
+          ],
+          "authenticatorSelection": {
+            "residentKey": "required",
+            "userVerification": "required",
+            "requireResidentKey": true
+          },
+          "extensions": {
+            "credProps": true
+          },
+          "hints": []
+        }
+      },
+      "cookies": "기록 대상 아님"
+    },
+    {
+      "at": "2026-10-06T00:29:37.287Z",
+      "path": "/api/passkeys",
+      "method": "POST",
+      "request": {
+        "action": "register-verify",
+        "flowId": "6ab2b84b-c830-45ee-937d-7b448e7ddb50",
+        "response": {
+          "id": "XGypxwFOTf-0pYWmFlRMnA",
+          "rawId": "XGypxwFOTf-0pYWmFlRMnA",
+          "response": {
+            "attestationObject": "o2NmbXRkbm9uZWdhdHRTdG10oGhhdXRoRGF0YViUlO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NFdAAAAAOqbjWZNAR0hPOS2tIy1ddQAEFxsqccBTk3_tKWFphZUTJylAQIDJiABIVggVKMcNDD1t2flguLKQZEMpj2wyE7oJ_wvdEhry792jCoiWCDUTOkuDVLyqMEtPZvuBWYj2u0b6wuv-XfQpSswYIDt_A",
+            "clientDataJSON": "eyJ0eXBlIjoid2ViYXV0aG4uY3JlYXRlIiwiY2hhbGxlbmdlIjoiQm1LbmpsbE8tcFVKM0hmaDFSSkYyWkVTdGIwNC1yVXBfNzNfdU1JVlJ2NCIsIm9yaWdpbiI6Imh0dHBzOi8vYWxlcGgtcGFzc2tleS1pbnRyby5ybGF0bWRndXM0MTQxLmNoYXRncHQuc2l0ZSIsImNyb3NzT3JpZ2luIjpmYWxzZX0",
+            "transports": [
+              "hybrid",
+              "internal"
+            ],
+            "publicKeyAlgorithm": -7,
+            "publicKey": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAEVKMcNDD1t2flguLKQZEMpj2wyE7oJ_wvdEhry792jCrUTOkuDVLyqMEtPZvuBWYj2u0b6wuv-XfQpSswYIDt_A",
+            "authenticatorData": "lO8BRv8NFbM7gZJDd2TH2VjD1nZ9nT6dyqppDQlr7NFdAAAAAOqbjWZNAR0hPOS2tIy1ddQAEFxsqccBTk3_tKWFphZUTJylAQIDJiABIVggVKMcNDD1t2flguLKQZEMpj2wyE7oJ_wvdEhry792jCoiWCDUTOkuDVLyqMEtPZvuBWYj2u0b6wuv-XfQpSswYIDt_A"
+          },
+          "type": "public-key",
+          "clientExtensionResults": {
+            "credProps": {
+              "rk": true
+            }
+          },
+          "authenticatorAttachment": "platform"
+        }
+      },
+      "status": 200,
+      "response": {
+        "verified": true,
+        "accountCreated": false,
+        "credential": {
+          "id": "XGypxwFOTf-0pYWmFlRMnA",
+          "name": "Google 백업 패스키",
+          "storage": "Google 비밀번호 관리자",
+          "public_key": "pQECAyYgASFYIFSjHDQw9bdn5YLiykGRDKY9sMhO6Cf8L3RIa8u_dowqIlgg1EzpLg1S8qjBLT2b7gVmI9rtG-sLr_l30KUrMGCA7fw",
+          "created_at": "2026-10-06T00:29:37.309Z"
+        },
+        "privateKeyReceived": false
+      },
+      "cookies": "기록 대상 아님"
+    },
+    {
+      "at": "2026-10-06T00:29:37.430Z",
+      "path": "/api/passkeys",
+      "method": "GET",
+      "request": null,
+      "status": 200,
+      "response": {
+        "authenticated": true,
+        "user": {
+          "id": "ce878517-e8c2-40c3-b616-ad50adec12a8",
+          "username": "t08-demo-a"
+        },
+        "passkeys": [
+          {
+            "id": "_Au8KJyjGRXJHP3be-zpX9AHtCmxCnoJ7_mA0IS98a4",
+            "name": "첫 번째 패스키",
+            "storage": "Windows Hello",
+            "device_type": "singleDevice",
+            "backed_up": 0,
+            "created_at": "2026-10-06T00:27:55.571Z",
+            "public_key": "pQECAyYgASFYIOw93ScQdKFq-hVUv__YNa_dzSDHmjhs1W4yN_4FH7e0IlggonSmBGfcsPLvRvwNo-QjyBy_5ojd474t0C2ZGWFXGLQ"
+          },
+          {
+            "id": "XGypxwFOTf-0pYWmFlRMnA",
+            "name": "Google 백업 패스키",
+            "storage": "Google 비밀번호 관리자",
+            "device_type": "multiDevice",
+            "backed_up": 1,
+            "created_at": "2026-10-06T00:29:37.309Z",
+            "public_key": "pQECAyYgASFYIFSjHDQw9bdn5YLiykGRDKY9sMhO6Cf8L3RIa8u_dowqIlgg1EzpLg1S8qjBLT2b7gVmI9rtG-sLr_l30KUrMGCA7fw"
+          }
+        ],
+        "sessionExpires": "2026-10-06T12:27:55.633Z"
+      },
+      "cookies": "기록 대상 아님"
+    },
+    {
+      "at": "2026-10-06T00:29:37.572Z",
+      "path": "/api/private",
+      "method": "GET",
+      "request": null,
+      "status": 200,
+      "response": {
+        "synthetic": true,
+        "owner": "ce878517-e8c2-40c3-b616-ad50adec12a8",
+        "items": [
+          {
+            "id": "1381c34b-1c9c-410c-bb5b-58c2be45baef",
+            "title": "[비공개 내용 가림]",
+            "body": "[비공개 내용 가림]",
+            "title_sha256": "8101d9a5ae6b44a36ad1e8d2afada82570ee29dcc13614a9fcb825014dbb77f1",
+            "body_sha256": "de9a6027fa311f5c364faeacc0ea9783862eb8dd8ee02faa523253634f543e04"
+          },
+          {
+            "id": "720969c5-eb05-4ae2-8449-874806c74123",
+            "title": "[비공개 내용 가림]",
+            "body": "[비공개 내용 가림]",
+            "title_sha256": "fa5c6f167c5c92cd4dec0388b617291f1db0049632a9fe1f0ae749ed4ff90d0b",
+            "body_sha256": "d65bedd1c1df4529325f15b6dab846545006b327227be69d106645ec3f54ff6b"
+          },
+          {
+            "id": "b5c50962-0ce7-403c-83fd-e51bdc7ddb98",
+            "title": "[비공개 내용 가림]",
+            "body": "[비공개 내용 가림]",
+            "title_sha256": "d7da745c09f47d18a7bd88d997db70a75c28f9d2102c791529164a33100d8107",
+            "body_sha256": "5ce5b3a914a50a0064907f1dabd15961b5b26d37d12423c6acd41cd9c27c5cd9"
+          }
+        ]
+      },
+      "cookies": "기록 대상 아님"
+    }
+  ],
+  "publication": {
+    "scope": "공개 확인용 사본. 비공개 메모 제목·본문을 가리고 SHA-256만 보존.",
+    "redactedFields": 12,
+    "privateNotes": "[본문 가림]",
+    "secrets": "비밀번호·개인키·쿠키·세션 원문 없음"
+  }
+}
